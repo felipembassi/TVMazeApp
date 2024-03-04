@@ -1,9 +1,4 @@
-//
-//  Item.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 29/02/24.
-//
+// Item.swift
 
 import Foundation
 import SwiftData
@@ -11,7 +6,7 @@ import SwiftData
 @Model
 final class Item {
     var timestamp: Date
-    
+
     init(timestamp: Date) {
         self.timestamp = timestamp
     }

@@ -1,9 +1,4 @@
-//
-//  TVShowDetailViewModel.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 04/03/24.
-//
+// TVShowDetailViewModel.swift
 
 import Combine
 import Foundation
@@ -38,7 +33,7 @@ class TVShowDetailViewModel: ObservableObject {
                     } catch {
                         // Handle or log episode fetch error
                         print("Error fetching episodes for season \(season.id): \(error)")
-                        tempSeasons[season] = [] // Consider storing an empty array or nil if that's more appropriate for your UI.
+                        tempSeasons[season] = []
                     }
                 }
 

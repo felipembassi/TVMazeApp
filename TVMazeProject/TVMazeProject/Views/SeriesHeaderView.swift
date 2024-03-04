@@ -1,16 +1,11 @@
-//
-//  SeriesHeaderView.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 03/03/24.
-//
+// SeriesHeaderView.swift
 
 import SwiftUI
 
 struct SeriesHeaderView: View {
     var series: TVShow
     var name: String
-    
+
     var body: some View {
         AsyncImage(url: URL(string: series.image.original)) { image in
             image.resizable()
@@ -20,15 +15,15 @@ struct SeriesHeaderView: View {
         .aspectRatio(contentMode: .fit)
         .listRowInsets(EdgeInsets())
         .frame(maxWidth: .infinity)
-        
+
         Text(name)
             .font(.title)
             .fontWeight(.bold)
             .foregroundColor(DesignSystem.Colors.foreground)
-        
+
         // Air Time
         AiringScheduleView(schedule: series.schedule)
-        
+
         HStack {
             ForEach(series.genres, id: \.self) { genre in
                 Text(genre)
@@ -38,7 +33,7 @@ struct SeriesHeaderView: View {
                     .foregroundColor(DesignSystem.Colors.foreground)
             }
         }
-        
+
         Text(series.summary ?? "N/A")
             .font(.body)
             .foregroundColor(DesignSystem.Colors.foreground)

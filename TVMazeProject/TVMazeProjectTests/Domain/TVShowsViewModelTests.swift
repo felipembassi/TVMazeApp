@@ -1,13 +1,8 @@
-//
-//  TVShowsViewModelTests.swift
-//  TVMazeProjectTests
-//
-//  Created by Felipe Moreira Tarrio Bassi on 03/03/24.
-//
+// TVShowsViewModelTests.swift
 
+import Combine
 import XCTest
 @testable import TVMazeProject // Use your actual module name
-import Combine
 
 @MainActor
 final class TVShowsViewModelTests: XCTestCase {
@@ -37,9 +32,7 @@ final class TVShowsViewModelTests: XCTestCase {
 
     func testLoadMoreContentInitially() async {
         mockService.showsToReturn = [TVShow](repeating: TVShow.mock, count: 10)
-        
         let showsLoaded = expectation(description: "Shows are loaded")
-        
         // Observe changes to the `shows` property
         viewModel.$shows
             .dropFirst() // Ignore the initial value
@@ -49,24 +42,26 @@ final class TVShowsViewModelTests: XCTestCase {
                 }
             }
             .store(in: &cancellables)
-        
+
         viewModel.loadMoreContentIfNeeded(currentItem: nil)
-        
-        // Use the new await syntax for waiting on the expectation
         await fulfillment(of: [showsLoaded], timeout: 1.0)
-        
+
         XCTAssertEqual(viewModel.shows.count, 10, "Expected 10 shows to be loaded initially")
     }
-    
+
     func testNoShowsAvailable() async {
         mockService.showsToReturn = []
         viewModel.loadMoreContentIfNeeded(currentItem: nil)
         XCTAssertEqual(viewModel.shows.count, 0, "Expected no shows to be loaded")
     }
-    
+
     func testErrorHandlingOnFetchFailure() async {
-        mockService.errorToThrow = NSError(domain: "TestError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Mock fetch error"])
-        
+        mockService.errorToThrow = NSError(
+            domain: "TestError",
+            code: 0,
+            userInfo: [NSLocalizedDescriptionKey: "Mock fetch error"]
+        )
+
         let errorExpectation = expectation(description: "Error handling")
         viewModel.$errorMessage
             .dropFirst()
@@ -76,12 +71,12 @@ final class TVShowsViewModelTests: XCTestCase {
                 }
             }
             .store(in: &cancellables)
-        
+
         viewModel.loadMoreContentIfNeeded(currentItem: nil)
-        
+
         // Wait for the observable error message
         await fulfillment(of: [errorExpectation], timeout: 5.0)
-        
+
         XCTAssertNotNil(viewModel.errorMessage, "Expected an error message after fetch failure")
     }
 }
@@ -94,7 +89,22 @@ extension TVShowsViewModelTests {
 
 extension TVShow {
     static var mock: TVShow {
-        return TVShow(id: 1, url: "", name: "Mock Show", genres: [], status: .running, runtime: nil, averageRuntime: nil, premiered: nil, ended: nil, officialSite: nil, schedule: Schedule(time: "", days: []), rating: nil, image: SeriesImage(medium: "", original: ""), summary: "", updated: 0, seasons: [])
+        return TVShow(
+            id: 1,
+            url: "",
+            name: "Mock Show",
+            genres: [],
+            status: .running,
+            runtime: nil,
+            averageRuntime: nil,
+            premiered: nil,
+            ended: nil,
+            officialSite: nil,
+            schedule: Schedule(time: "", days: []),
+            rating: nil,
+            image: SeriesImage(medium: "", original: ""),
+            summary: "",
+            updated: 0
+        )
     }
 }
-

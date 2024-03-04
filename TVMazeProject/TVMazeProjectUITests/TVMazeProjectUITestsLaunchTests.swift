@@ -1,14 +1,8 @@
-//
-//  TVMazeProjectUITestsLaunchTests.swift
-//  TVMazeProjectUITests
-//
-//  Created by Felipe Moreira Tarrio Bassi on 29/02/24.
-//
+// TVMazeProjectUITestsLaunchTests.swift
 
 import XCTest
 
 final class TVMazeProjectUITestsLaunchTests: XCTestCase {
-
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

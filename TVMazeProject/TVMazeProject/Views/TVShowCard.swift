@@ -1,15 +1,10 @@
-//
-//  TVSeriesCard.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 01/03/24.
-//
+// TVShowCard.swift
 
 import SwiftUI
 
 struct TVShowCard: View {
     var tvshow: TVShow
-    
+
     var body: some View {
         VStack {
             AsyncImage(url: URL(string: tvshow.image.original)) { image in
@@ -20,12 +15,12 @@ struct TVShowCard: View {
             .aspectRatio(contentMode: .fill)
             .frame(width: 150, height: 200)
             .cornerRadius(10)
-            
+
             Text(tvshow.name)
                 .fontWeight(.medium)
                 .lineLimit(1)
                 .foregroundColor(DesignSystem.Colors.foreground)
-            
+
             RatingStarsView(starRating: tvshow.starRating)
         }
     }

@@ -73,6 +73,7 @@
 		942B54C12B955491009CCA2C /* MockTVShowsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTVShowsService.swift; sourceTree = "<group>"; };
 		942B54C32B9554E4009CCA2C /* TVShowsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsViewModelTests.swift; sourceTree = "<group>"; };
 		942B54C52B95858E009CCA2C /* TVShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailViewModel.swift; sourceTree = "<group>"; };
+		942B54C82B965526009CCA2C /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		947E52E22B92540B00FFF340 /* TVShowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsView.swift; sourceTree = "<group>"; };
 		947E52E42B92541E00FFF340 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		947E52E62B92542C00FFF340 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -197,6 +198,7 @@
 		94E6C1292B9134810031B647 = {
 			isa = PBXGroup;
 			children = (
+				942B54C82B965526009CCA2C /* swiftlint.yml */,
 				94E6C1342B9134820031B647 /* TVMazeProject */,
 				94E6C1472B9134830031B647 /* TVMazeProjectTests */,
 				94E6C1512B9134830031B647 /* TVMazeProjectUITests */,
@@ -265,6 +267,7 @@
 			buildConfigurationList = 94E6C1582B9134830031B647 /* Build configuration list for PBXNativeTarget "TVMazeProject" */;
 			buildPhases = (
 				94E6C12E2B9134820031B647 /* Sources */,
+				942B54C72B965249009CCA2C /* SwiftLint */,
 				94E6C12F2B9134820031B647 /* Frameworks */,
 				94E6C1302B9134820031B647 /* Resources */,
 			);
@@ -381,6 +384,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		942B54C72B965249009CCA2C /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${ENABLE_PREVIEWS}\" = \"YES\" ]; then\n  echo \"Previews enabled, quitting to prevent 'preview paused'.\"\n  exit 0;\nfi\n~/.mint/bin/mint run swiftlint\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		94E6C12E2B9134820031B647 /* Sources */ = {
@@ -576,6 +601,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TVMazeProject/Preview Content\"";
 				DEVELOPMENT_TEAM = WH7DC8GTYG;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -606,6 +632,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TVMazeProject/Preview Content\"";
 				DEVELOPMENT_TEAM = WH7DC8GTYG;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

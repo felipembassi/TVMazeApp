@@ -1,15 +1,10 @@
-//
-//  EpisodesRow.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 03/03/24.
-//
+// EpisodeRow.swift
 
 import SwiftUI
 
 struct EpisodeRow: View {
     let episode: Episode
-    
+
     var body: some View {
         HStack {
             if let imageUrl = episode.image?.medium, let url = URL(string: imageUrl) {

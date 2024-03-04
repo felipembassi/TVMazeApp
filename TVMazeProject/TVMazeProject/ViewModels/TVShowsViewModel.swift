@@ -1,9 +1,4 @@
-//
-//  HomeViewModel.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 03/03/24.
-//
+// TVShowsViewModel.swift
 
 import Combine
 import Foundation
@@ -28,7 +23,10 @@ class TVShowsViewModel: TVShowsViewModelProtocol {
     private var subscriptions = Set<AnyCancellable>()
     private let service: TVShowsServiceProtocol
 
-    init(service: TVShowsServiceProtocol = TVShowsService(), debounceDelay: DispatchQueue.SchedulerTimeType.Stride = .milliseconds(500)) {
+    init(
+        service: TVShowsServiceProtocol = TVShowsService(),
+        debounceDelay: DispatchQueue.SchedulerTimeType.Stride = .milliseconds(500)
+    ) {
         self.service = service
         addSubscribers(debounceDelay: debounceDelay)
     }
@@ -65,10 +63,11 @@ class TVShowsViewModel: TVShowsViewModelProtocol {
     }
 
     func loadMoreContentIfNeeded(currentItem show: TVShow?) {
-        guard !isLoading, let show = show, let thresholdIndex = shows.index(shows.endIndex, offsetBy: -10, limitedBy: shows.startIndex) else {
+        guard !isLoading, let show = show,
+              let thresholdIndex = shows.index(shows.endIndex, offsetBy: -10, limitedBy: shows.startIndex) else {
             return
         }
-        
+
         if shows.firstIndex(where: { $0.id == show.id }) ?? 0 >= thresholdIndex {
             loadMoreShows()
         }
@@ -99,4 +98,3 @@ class TVShowsViewModel: TVShowsViewModelProtocol {
         }
     }
 }
-

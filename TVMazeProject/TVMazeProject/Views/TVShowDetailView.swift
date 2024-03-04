@@ -1,21 +1,16 @@
-//
-//  SeriesDetailView.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 03/03/24.
-//
+// TVShowDetailView.swift
 
 import SwiftUI
 
 struct TVShowDetailView: View {
     @StateObject private var viewModel: TVShowDetailViewModel
     let tvShow: TVShow
-    
+
     init(tvShow: TVShow, service: TVShowsServiceProtocol = TVShowsService()) {
         self.tvShow = tvShow
         _viewModel = StateObject(wrappedValue: TVShowDetailViewModel(tvShowID: tvShow.id, service: service))
     }
-    
+
     var body: some View {
         List {
             Section {
@@ -47,7 +42,6 @@ struct TVShowDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-
 
 #Preview {
     guard let series = TVShow.preview().first else {

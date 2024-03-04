@@ -1,9 +1,4 @@
-//
-//  TVShowsView.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 29/02/24.
-//
+// TVShowsView.swift
 
 import SwiftUI
 
@@ -31,8 +26,7 @@ struct TVShowsView: View {
         }
     }
 
-    @ViewBuilder
-    private var showsGrid: some View {
+    @ViewBuilder private var showsGrid: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
                 ForEach(viewModel.shows, id: \.self) { series in
@@ -48,8 +42,6 @@ struct TVShowsView: View {
         }
     }
 }
-
-
 
 #Preview {
     TVShowsView()

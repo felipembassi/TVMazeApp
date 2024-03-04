@@ -1,20 +1,15 @@
-//
-//  EpisodeDetailView.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 03/03/24.
-//
+// EpisodeDetailView.swift
 
 import SwiftUI
 
 struct EpisodeDetailView: View {
     let series: TVShow
     let episode: Episode
-    
+
     var body: some View {
         ScrollView {
             SeriesHeaderView(series: series, name: episode.name)
-            .padding()
+                .padding()
         }
         .navigationTitle("\(series.name) - S\(episode.season)E\(episode.number)")
         .navigationBarTitleDisplayMode(.inline)
