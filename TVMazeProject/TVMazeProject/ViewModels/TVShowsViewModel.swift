@@ -56,6 +56,7 @@ class TVShowsViewModel: TVShowsViewModelProtocol {
             do {
                 let searchResults = try await service.searchShows(query: query)
                 shows = searchResults
+                errorMessage = nil
             } catch {
                 errorMessage = "Failed to load search results: \(error.localizedDescription)"
             }
@@ -89,6 +90,7 @@ class TVShowsViewModel: TVShowsViewModelProtocol {
                 if !newShows.isEmpty {
                     shows.append(contentsOf: newShows)
                     currentPage += 1
+                    errorMessage = nil
                 }
             } catch {
                 errorMessage = error.localizedDescription

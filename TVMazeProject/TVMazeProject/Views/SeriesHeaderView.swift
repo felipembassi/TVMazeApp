@@ -39,7 +39,7 @@ struct SeriesHeaderView: View {
             }
         }
         
-        Text(series.summary)
+        Text(series.summary ?? "N/A")
             .font(.body)
             .foregroundColor(DesignSystem.Colors.foreground)
     }

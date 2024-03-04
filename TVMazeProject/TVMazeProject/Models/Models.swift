@@ -19,7 +19,7 @@ struct TVShow: Codable {
     let schedule: Schedule
     let rating: Rating?
     let image: SeriesImage
-    let summary: String
+    let summary: String?
     let updated: Int
     
     var starRating: StarRating {
@@ -47,6 +47,10 @@ struct TVShow: Codable {
             )
         }
     }
+}
+
+struct Searched: Codable {
+    let show: TVShow
 }
 
 struct Season: Codable {

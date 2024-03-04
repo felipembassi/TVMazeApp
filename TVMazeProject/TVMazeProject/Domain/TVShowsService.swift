@@ -29,8 +29,8 @@ struct TVShowsService: TVShowsServiceProtocol {
 
     func searchShows(query: String) async throws -> [TVShow] {
         let endpoint = APIEndpoints.search(query: query).urlString
-        let searchResults: [TVShow] = try await networkService.fetchData(from: endpoint)
-        return searchResults.compactMap { $0 }
+        let searchResults: [Searched] = try await networkService.fetchData(from: endpoint)
+        return searchResults.compactMap { $0.show }
     }
     
     func fetchSeasons(for showID: Int) async throws -> [Season] {
