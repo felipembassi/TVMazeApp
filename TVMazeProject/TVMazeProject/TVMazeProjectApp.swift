@@ -4,14 +4,16 @@ import SwiftData
 import SwiftUI
 import UIKit
 
+typealias AppDIContainer = HasAPIKeychainService & HasTVShowsService
+
+class AppDependencyContainer: ObservableObject, AppDIContainer {
+    var keychainService: KeychainServiceProtocol = KeychainService()
+    var service: TVShowsServiceProtocol = TVShowsService(networkService: NetworkService())
+}
+
 @main
 struct TVMazeProjectApp: App {
-    init() {
-        // Customize search bar cancel button color
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.red
-        configureTabBarAppearance()
-        configureNavigationBarAppearance()
-    }
+    private var appDIContainer = AppDependencyContainer()
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -28,9 +30,16 @@ struct TVMazeProjectApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppCoordinatorView(diContainer: appDIContainer)
         }
         .modelContainer(sharedModelContainer)
+    }
+
+    init() {
+        // Customize search bar cancel button color
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.red
+        configureTabBarAppearance()
+        configureNavigationBarAppearance()
     }
 
     private func configureTabBarAppearance() {

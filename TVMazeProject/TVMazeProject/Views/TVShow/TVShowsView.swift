@@ -3,7 +3,11 @@
 import SwiftUI
 
 struct TVShowsView: View {
-    @StateObject private var viewModel = TVShowsViewModel()
+    @ObservedObject private var viewModel: TVShowsViewModel
+
+    public init(viewModel: TVShowsViewModel) {
+        self.viewModel = viewModel
+    }
 
     var body: some View {
         NavigationView {
@@ -29,13 +33,11 @@ struct TVShowsView: View {
     @ViewBuilder private var showsGrid: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-                ForEach(viewModel.shows, id: \.self) { series in
-                    NavigationLink(destination: TVShowDetailView(tvShow: series)) {
-                        TVShowCard(tvshow: series)
-                    }
-                    .onAppear {
-                        viewModel.loadMoreContentIfNeeded(currentItem: series)
-                    }
+                ForEach(viewModel.shows, id: \.self) { tvShow in
+                    TVShowCard(tvshow: tvShow)
+                        .onTapGesture {
+                            viewModel.selectTVShow(tvShow)
+                        }
                 }
             }
             .padding(.horizontal)
@@ -43,6 +45,6 @@ struct TVShowsView: View {
     }
 }
 
-#Preview {
-    TVShowsView()
-}
+// #Preview {
+//    TVShowsView(viewModel: TVShowsViewModel())
+// }

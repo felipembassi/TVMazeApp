@@ -2,6 +2,7 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 @MainActor
 protocol TVShowsViewModelProtocol: ObservableObject {
@@ -10,24 +11,28 @@ protocol TVShowsViewModelProtocol: ObservableObject {
     var searchText: String { get set }
     func loadMoreContentIfNeeded(currentItem show: TVShow?)
     func refreshShows()
+    func selectTVShow(_ tvShow: TVShow)
 }
 
 @MainActor
-class TVShowsViewModel: TVShowsViewModelProtocol {
+final class TVShowsViewModel: TVShowsViewModelProtocol {
     @Published var shows: [TVShow] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
     @Published var searchText = ""
 
+    private weak var coordinator: AppCoordinator?
     private var currentPage = 0
     private var subscriptions = Set<AnyCancellable>()
     private let service: TVShowsServiceProtocol
 
     init(
-        service: TVShowsServiceProtocol = TVShowsService(),
+        service: TVShowsServiceProtocol,
+        coordinator: AppCoordinator,
         debounceDelay: DispatchQueue.SchedulerTimeType.Stride = .milliseconds(500)
     ) {
         self.service = service
+        self.coordinator = coordinator
         addSubscribers(debounceDelay: debounceDelay)
     }
 
@@ -96,5 +101,9 @@ class TVShowsViewModel: TVShowsViewModelProtocol {
             }
             isLoading = false
         }
+    }
+
+    func selectTVShow(_ tvShow: TVShow) {
+        coordinator?.push(.detail(tvShow: tvShow))
     }
 }

@@ -1,3 +1,0 @@
-// SearchView.swift
-
-import Foundation

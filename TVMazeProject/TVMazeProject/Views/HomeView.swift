@@ -1,21 +1,27 @@
-// ContentView.swift
+// HomeView.swift
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
+    @ObservedObject private var viewModel: HomeViewModel
+
+    public init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
+
     var body: some View {
         TabView {
-            TVShowsView()
+            viewModel.startTVShowCoordinator()
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
 
-            FavoritesView()
+            viewModel.startFavoritesCoordinator()
                 .tabItem {
                     Label("Favorites", systemImage: "heart.fill")
                 }
 
-            SettingsView()
+            viewModel.startSettingsCoordinator()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
@@ -26,7 +32,7 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
-}
+// #Preview {
+//    HomeView(viewModel: HomeViewModel.preview())
+//        .modelContainer(for: Item.self, inMemory: true)
+// }

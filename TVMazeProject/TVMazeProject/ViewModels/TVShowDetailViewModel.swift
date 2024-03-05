@@ -4,17 +4,31 @@ import Combine
 import Foundation
 
 @MainActor
-class TVShowDetailViewModel: ObservableObject {
+protocol TVShowDetailViewModelProtocol: AnyObject, ObservableObject {
+    var seasons: [Season: [Episode]] { get set }
+    var isLoading: Bool { get set }
+    var errorMessage: String? { get set }
+    var tvShow: TVShow { get }
+    
+    func fetchSeasonsAndEpisodes()
+    func selectEpisode(_ episode: Episode)
+}
+
+class TVShowDetailViewModel: TVShowDetailViewModelProtocol {
     @Published var seasons: [Season: [Episode]] = [:]
     @Published var isLoading = false
     @Published var errorMessage: String?
-
-    private let tvShowID: Int
+    
+    let tvShow: TVShow
+    
     private let service: TVShowsServiceProtocol
+    
+    private weak var coordinator: AppCoordinator?
 
-    init(tvShowID: Int, service: TVShowsServiceProtocol) {
-        self.tvShowID = tvShowID
+    init(tvShow: TVShow, service: TVShowsServiceProtocol, coordinator: AppCoordinator) {
+        self.tvShow = tvShow
         self.service = service
+        self.coordinator = coordinator
     }
 
     func fetchSeasonsAndEpisodes() {
@@ -23,7 +37,7 @@ class TVShowDetailViewModel: ObservableObject {
 
         Task {
             do {
-                let fetchedSeasons = try await service.fetchSeasons(for: tvShowID)
+                let fetchedSeasons = try await service.fetchSeasons(for: tvShow.id)
                 var tempSeasons: [Season: [Episode]] = [:]
 
                 for season in fetchedSeasons {
@@ -45,5 +59,9 @@ class TVShowDetailViewModel: ObservableObject {
             }
             self.isLoading = false
         }
+    }
+    
+    func selectEpisode(_ episode: Episode) {
+        coordinator?.push(.episodeDetail(tvShow: tvShow, episode: episode))
     }
 }

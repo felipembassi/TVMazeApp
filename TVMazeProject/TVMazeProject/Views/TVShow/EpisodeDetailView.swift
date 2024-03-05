@@ -3,22 +3,22 @@
 import SwiftUI
 
 struct EpisodeDetailView: View {
-    let series: TVShow
+    let tvShow: TVShow
     let episode: Episode
 
     var body: some View {
         ScrollView {
-            SeriesHeaderView(series: series, name: episode.name)
+            SeriesHeaderView(tvShow: tvShow, name: episode.name)
                 .padding()
         }
-        .navigationTitle("\(series.name) - S\(episode.season)E\(episode.number)")
+        .navigationTitle("\(tvShow.name) - S\(episode.season)E\(episode.number)")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
     if let series = TVShow.preview().first, let episode = Episode.preview().first {
-        EpisodeDetailView(series: series, episode: episode)
+        EpisodeDetailView(tvShow: series, episode: episode)
     } else {
         EmptyView()
     }

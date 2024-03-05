@@ -3,6 +3,10 @@
 import Combine
 import Foundation
 
+protocol HasTVShowsService {
+    var service: TVShowsServiceProtocol { get }
+}
+
 protocol TVShowsServiceProtocol {
     func fetchShows(page: Int) async throws -> [TVShow]
     func searchShows(query: String) async throws -> [TVShow]
