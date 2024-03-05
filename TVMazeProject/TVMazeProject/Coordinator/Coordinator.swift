@@ -81,9 +81,9 @@ class AppCoordinator: CoordinatorProtocol {
             build(.favorites)
         case .home:
             build(.home)
-        case .detail(tvShow: let tvShow):
+        case let .detail(tvShow: tvShow):
             build(.detail(tvShow: tvShow))
-        case .episodeDetail(tvShow: let tvShow, episode: let episode):
+        case let .episodeDetail(tvShow: tvShow, episode: episode):
             build(.episodeDetail(tvShow: tvShow, episode: episode))
         }
     }

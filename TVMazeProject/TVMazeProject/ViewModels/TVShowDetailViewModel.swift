@@ -9,7 +9,7 @@ protocol TVShowDetailViewModelProtocol: AnyObject, ObservableObject {
     var isLoading: Bool { get set }
     var errorMessage: String? { get set }
     var tvShow: TVShow { get }
-    
+
     func fetchSeasonsAndEpisodes()
     func selectEpisode(_ episode: Episode)
 }
@@ -18,11 +18,11 @@ class TVShowDetailViewModel: TVShowDetailViewModelProtocol {
     @Published var seasons: [Season: [Episode]] = [:]
     @Published var isLoading = false
     @Published var errorMessage: String?
-    
+
     let tvShow: TVShow
-    
+
     private let service: TVShowsServiceProtocol
-    
+
     private weak var coordinator: AppCoordinator?
 
     init(tvShow: TVShow, service: TVShowsServiceProtocol, coordinator: AppCoordinator) {
@@ -60,7 +60,7 @@ class TVShowDetailViewModel: TVShowDetailViewModelProtocol {
             self.isLoading = false
         }
     }
-    
+
     func selectEpisode(_ episode: Episode) {
         coordinator?.push(.episodeDetail(tvShow: tvShow, episode: episode))
     }

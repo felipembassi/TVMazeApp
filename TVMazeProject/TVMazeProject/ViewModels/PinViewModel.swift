@@ -36,9 +36,9 @@ final class PinViewModel: ObservableObject {
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             let reason = "Log in with your fingerprint"
             context.evaluatePolicy(
-                    .deviceOwnerAuthenticationWithBiometrics,
-                    localizedReason: reason
-                ) { [weak self] success, _ in
+                .deviceOwnerAuthenticationWithBiometrics,
+                localizedReason: reason
+            ) { [weak self] success, _ in
                 DispatchQueue.main.async { [weak self] in
                     if success {
                         self?.coordinator?.determineInitialView()
