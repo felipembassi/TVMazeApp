@@ -2,8 +2,8 @@
 
 import SwiftUI
 
-struct SettingsView: View {
-    @ObservedObject var viewModel: SettingsViewModel
+struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
+    @ObservedObject private(set) var viewModel: ViewModel
 
     var body: some View {
         Form {
@@ -22,6 +22,14 @@ struct SettingsView: View {
     }
 }
 
-// #Preview {
-//    SettingsView(viewModel: SettingsViewModel(keychainService: KeychainService()))
-// }
+#Preview {
+    class PreviewSettingsViewModel: SettingsViewModelProtocol {
+        var pin: String = "1234"
+        var isBiometricsEnabled: Bool = false
+        var canEvaluatePolicy: Bool = false
+        
+        func saveSettings() {}
+    }
+    let viewModel = PreviewSettingsViewModel()
+    return SettingsView(viewModel:viewModel)
+}

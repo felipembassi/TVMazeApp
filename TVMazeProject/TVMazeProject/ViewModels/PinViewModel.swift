@@ -3,7 +3,15 @@
 import LocalAuthentication
 
 @MainActor
-final class PinViewModel: ObservableObject {
+protocol PinViewModelProtocol: ObservableObject {
+    var pin: String { get set }
+    var errorMessage: String? { get set }
+    
+    func verifyPin()
+    func authenticateWithBiometrics()
+}
+
+final class PinViewModel: PinViewModelProtocol {
     @Published var pin: String = ""
     @Published var errorMessage: String?
 

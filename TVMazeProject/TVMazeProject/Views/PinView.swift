@@ -2,8 +2,8 @@
 
 import SwiftUI
 
-struct PinView: View {
-    @ObservedObject var viewModel: PinViewModel
+struct PinView<ViewModel: PinViewModelProtocol>: View {
+    @ObservedObject var viewModel: ViewModel
 
     var body: some View {
         VStack {
@@ -19,6 +19,15 @@ struct PinView: View {
     }
 }
 
-// #Preview {
-//    PinView(viewModel: PinViewModel(keychainService: KeychainService()))
-// }
+#Preview {
+    class PreviewPinViewModel: PinViewModelProtocol {
+        var pin: String = "1234"
+        var errorMessage: String? = nil
+        
+        func verifyPin() {}
+        func authenticateWithBiometrics() {}
+    }
+    
+    let viewModel = PreviewPinViewModel()
+    return PinView(viewModel: viewModel)
+}

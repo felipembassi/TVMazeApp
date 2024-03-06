@@ -20,7 +20,7 @@ protocol CoordinatorProtocol: ObservableObject {
     func determineInitialView()
 }
 
-class AppCoordinator: CoordinatorProtocol {
+final class AppCoordinator: CoordinatorProtocol {
     @Published var path: NavigationPath = NavigationPath()
     @Published var rootPage: Page = .pin
 
@@ -49,12 +49,12 @@ class AppCoordinator: CoordinatorProtocol {
         case .home:
             let viewModel = HomeViewModel(coordinator: self)
             HomeView(viewModel: viewModel)
-        case let .detail(tvShow):
-            let viewModel = TVShowDetailViewModel(tvShow: tvShow, service: diContainer.service, coordinator: self)
-            TVShowDetailView(viewModel: viewModel)
         case .tvShow:
             let viewModel = TVShowsViewModel(service: diContainer.service, coordinator: self)
             TVShowsView(viewModel: viewModel)
+        case let .detail(tvShow):
+            let viewModel = TVShowDetailViewModel(tvShow: tvShow, service: diContainer.service, coordinator: self)
+            TVShowDetailView(viewModel: viewModel)
         case let .episodeDetail(tvShow, episode):
             EpisodeDetailView(tvShow: tvShow, episode: episode)
         case .favorites:

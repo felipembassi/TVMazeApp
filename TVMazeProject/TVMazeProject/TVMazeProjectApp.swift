@@ -6,14 +6,14 @@ import UIKit
 
 typealias AppDIContainer = HasAPIKeychainService & HasTVShowsService
 
-class AppDependencyContainer: ObservableObject, AppDIContainer {
+final class AppDependencyContainer: ObservableObject, AppDIContainer {
     var keychainService: KeychainServiceProtocol = KeychainService()
     var service: TVShowsServiceProtocol = TVShowsService(networkService: NetworkService())
 }
 
 @main
 struct TVMazeProjectApp: App {
-    private var appDIContainer = AppDependencyContainer()
+    private let appDIContainer = AppDependencyContainer()
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([

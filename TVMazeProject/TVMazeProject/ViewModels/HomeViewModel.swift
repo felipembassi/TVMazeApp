@@ -3,22 +3,28 @@
 import SwiftUI
 
 @MainActor
-class HomeViewModel: ObservableObject {
+protocol HomeViewModelProtocol: ObservableObject {
+    func startTVShowCoordinator() -> AnyView
+    func startFavoritesCoordinator() -> AnyView
+    func startSettingsCoordinator() -> AnyView
+}
+
+final class HomeViewModel: HomeViewModelProtocol {
     private weak var coordinator: AppCoordinator?
 
     init(coordinator: AppCoordinator) {
         self.coordinator = coordinator
     }
 
-    func startTVShowCoordinator() -> some View {
-        coordinator?.build(.tvShow)
+    func startTVShowCoordinator() -> AnyView {
+        AnyView(coordinator?.build(.tvShow))
     }
 
-    func startFavoritesCoordinator() -> some View {
-        coordinator?.build(.favorites)
+    func startFavoritesCoordinator() -> AnyView {
+        AnyView(coordinator?.build(.favorites))
     }
 
-    func startSettingsCoordinator() -> some View {
-        coordinator?.build(.settings)
+    func startSettingsCoordinator() -> AnyView {
+        AnyView(coordinator?.build(.settings))
     }
 }

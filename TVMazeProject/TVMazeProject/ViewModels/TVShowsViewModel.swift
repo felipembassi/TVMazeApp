@@ -9,12 +9,12 @@ protocol TVShowsViewModelProtocol: ObservableObject {
     var shows: [TVShow] { get set }
     var isLoading: Bool { get set }
     var searchText: String { get set }
+    var errorMessage: String? { get set }
     func loadMoreContentIfNeeded(currentItem show: TVShow?)
     func refreshShows()
     func selectTVShow(_ tvShow: TVShow)
 }
 
-@MainActor
 final class TVShowsViewModel: TVShowsViewModelProtocol {
     @Published var shows: [TVShow] = []
     @Published var isLoading = false

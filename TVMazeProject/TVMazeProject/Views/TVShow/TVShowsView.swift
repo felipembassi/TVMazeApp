@@ -2,16 +2,12 @@
 
 import SwiftUI
 
-struct TVShowsView: View {
-    @ObservedObject private var viewModel: TVShowsViewModel
-
-    public init(viewModel: TVShowsViewModel) {
-        self.viewModel = viewModel
-    }
+struct TVShowsView<ViewModel: TVShowsViewModelProtocol>: View {
+    @ObservedObject private(set) var viewModel: ViewModel
 
     var body: some View {
         NavigationView {
-            Group {
+            VStack {
                 if viewModel.isLoading && viewModel.shows.isEmpty {
                     ProgressView()
                 } else if let errorMessage = viewModel.errorMessage {
@@ -40,11 +36,22 @@ struct TVShowsView: View {
                         }
                 }
             }
-            .padding(.horizontal)
+            .padding()
         }
     }
 }
 
-// #Preview {
-//    TVShowsView(viewModel: TVShowsViewModel())
-// }
+#Preview {
+    class PreviewTVShowsViewModel: TVShowsViewModelProtocol {
+        var shows: [TVShow] = TVShow.preview()
+        var isLoading: Bool = false
+        var searchText: String = ""
+        var errorMessage: String?
+        func loadMoreContentIfNeeded(currentItem _: TVShow?) {}
+        func refreshShows() {}
+        func selectTVShow(_: TVShow) {}
+    }
+
+    let viewModel = PreviewTVShowsViewModel()
+    return TVShowsView(viewModel: viewModel)
+}

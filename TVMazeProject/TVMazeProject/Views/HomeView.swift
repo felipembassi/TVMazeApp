@@ -2,12 +2,8 @@
 
 import SwiftUI
 
-struct HomeView: View {
-    @ObservedObject private var viewModel: HomeViewModel
-
-    public init(viewModel: HomeViewModel) {
-        self.viewModel = viewModel
-    }
+struct HomeView<ViewModel: HomeViewModelProtocol>: View {
+    @ObservedObject private(set) var viewModel: ViewModel
 
     var body: some View {
         TabView {
@@ -32,7 +28,21 @@ struct HomeView: View {
     }
 }
 
-// #Preview {
-//    HomeView(viewModel: HomeViewModel.preview())
-//        .modelContainer(for: Item.self, inMemory: true)
-// }
+#Preview {
+    class PreviewHomeViewModel: HomeViewModelProtocol {
+        func startTVShowCoordinator() -> AnyView {
+            AnyView(EmptyView())
+        }
+        
+        func startFavoritesCoordinator() -> AnyView {
+            AnyView(EmptyView())
+        }
+        
+        func startSettingsCoordinator() -> AnyView {
+            AnyView(EmptyView())
+        }
+    }
+    let viewModel = PreviewHomeViewModel()
+    return HomeView(viewModel: viewModel)
+        .modelContainer(for: Item.self, inMemory: true)
+}

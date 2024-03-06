@@ -6,7 +6,15 @@ import LocalAuthentication
 import SwiftUI
 
 @MainActor
-class SettingsViewModel: ObservableObject {
+protocol SettingsViewModelProtocol: ObservableObject {
+    var pin: String { get set }
+    var isBiometricsEnabled: Bool { get set }
+    var canEvaluatePolicy: Bool { get set }
+    
+    func saveSettings()
+}
+
+final class SettingsViewModel: SettingsViewModelProtocol {
     @Published var pin: String = ""
     @Published var isBiometricsEnabled: Bool = false
     @Published var canEvaluatePolicy: Bool = false

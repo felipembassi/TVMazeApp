@@ -8,7 +8,7 @@ protocol HasAPIKeychainService {
     var keychainService: KeychainServiceProtocol { get }
 }
 
-protocol KeychainServiceProtocol: Injectable {
+protocol KeychainServiceProtocol {
     func savePin(_ pin: String)
     func loadPin() -> String?
     func deletePin()
@@ -16,7 +16,7 @@ protocol KeychainServiceProtocol: Injectable {
     func isBiometricsEnabled() -> Bool
 }
 
-class KeychainService: KeychainServiceProtocol {
+final class KeychainService: KeychainServiceProtocol {
     private let serviceName = "com.tvmazeapp.keychain"
     private let account = "userPIN"
     private let accessGroup: String? = nil

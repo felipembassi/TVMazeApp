@@ -37,8 +37,6 @@
 		94C9017D2B96A0F10026601F /* PinViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C9017C2B96A0F10026601F /* PinViewModelTests.swift */; };
 		94C9017F2B96B79A0026601F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C9017E2B96B79A0026601F /* HomeViewModel.swift */; };
 		94C901812B96BA7D0026601F /* Authenticated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C901802B96BA7D0026601F /* Authenticated.swift */; };
-		94C901842B96D0D70026601F /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C901832B96D0D70026601F /* Injectable.swift */; };
-		94C901862B96D1230026601F /* DependencyInjectionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C901852B96D1230026601F /* DependencyInjectionContainer.swift */; };
 		94E6C1362B9134820031B647 /* TVMazeProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6C1352B9134820031B647 /* TVMazeProjectApp.swift */; };
 		94E6C1382B9134820031B647 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6C1372B9134820031B647 /* HomeView.swift */; };
 		94E6C13A2B9134820031B647 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6C1392B9134820031B647 /* Item.swift */; };
@@ -97,8 +95,6 @@
 		94C9017C2B96A0F10026601F /* PinViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewModelTests.swift; sourceTree = "<group>"; };
 		94C9017E2B96B79A0026601F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		94C901802B96BA7D0026601F /* Authenticated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticated.swift; sourceTree = "<group>"; };
-		94C901832B96D0D70026601F /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
-		94C901852B96D1230026601F /* DependencyInjectionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectionContainer.swift; sourceTree = "<group>"; };
 		94E6C1322B9134820031B647 /* TVMazeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVMazeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E6C1352B9134820031B647 /* TVMazeProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMazeProjectApp.swift; sourceTree = "<group>"; };
 		94E6C1372B9134820031B647 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -253,15 +249,6 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		94C901822B96D0B40026601F /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				94C901832B96D0D70026601F /* Injectable.swift */,
-				94C901852B96D1230026601F /* DependencyInjectionContainer.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		94E6C1292B9134810031B647 = {
 			isa = PBXGroup;
 			children = (
@@ -286,7 +273,6 @@
 		94E6C1342B9134820031B647 /* TVMazeProject */ = {
 			isa = PBXGroup;
 			children = (
-				94C901822B96D0B40026601F /* Utils */,
 				942B54C92B966677009CCA2C /* Coordinator */,
 				942B54B82B954F03009CCA2C /* Domain */,
 				942B54B72B954BBE009CCA2C /* ViewModels */,
@@ -495,7 +481,6 @@
 				942B54BA2B954F20009CCA2C /* TVShowsService.swift in Sources */,
 				94C9017F2B96B79A0026601F /* HomeViewModel.swift in Sources */,
 				94E6C1382B9134820031B647 /* HomeView.swift in Sources */,
-				94C901862B96D1230026601F /* DependencyInjectionContainer.swift in Sources */,
 				942B54A02B95246F009CCA2C /* SeriesHeaderView.swift in Sources */,
 				947E52E32B92540B00FFF340 /* TVShowsView.swift in Sources */,
 				94C9017B2B969B3D0026601F /* PinViewModel.swift in Sources */,
@@ -503,7 +488,6 @@
 				942B54CB2B96668A009CCA2C /* Coordinator.swift in Sources */,
 				942B54B02B95491A009CCA2C /* APIEndpoints.swift in Sources */,
 				942B549C2B951CD1009CCA2C /* EpisodeDetailView.swift in Sources */,
-				94C901842B96D0D70026601F /* Injectable.swift in Sources */,
 				942B54A42B952648009CCA2C /* Models.swift in Sources */,
 				942B54982B951BE8009CCA2C /* TVShowDetailView.swift in Sources */,
 				942B54B22B954943009CCA2C /* NetworkService.swift in Sources */,

@@ -4,7 +4,7 @@ import Combine
 import Foundation
 
 @MainActor
-protocol TVShowDetailViewModelProtocol: AnyObject, ObservableObject {
+protocol TVShowDetailViewModelProtocol: ObservableObject {
     var seasons: [Season: [Episode]] { get set }
     var isLoading: Bool { get set }
     var errorMessage: String? { get set }
@@ -14,7 +14,7 @@ protocol TVShowDetailViewModelProtocol: AnyObject, ObservableObject {
     func selectEpisode(_ episode: Episode)
 }
 
-class TVShowDetailViewModel: TVShowDetailViewModelProtocol {
+final class TVShowDetailViewModel: TVShowDetailViewModelProtocol {
     @Published var seasons: [Season: [Episode]] = [:]
     @Published var isLoading = false
     @Published var errorMessage: String?

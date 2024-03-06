@@ -2,12 +2,8 @@
 
 import SwiftUI
 
-struct TVShowDetailView: View {
-    @ObservedObject private var viewModel: TVShowDetailViewModel
-
-    init(viewModel: TVShowDetailViewModel) {
-        self.viewModel = viewModel
-    }
+struct TVShowDetailView<ViewModel: TVShowDetailViewModelProtocol>: View {
+    @ObservedObject private(set) var viewModel: ViewModel
 
     var body: some View {
         List {
@@ -62,9 +58,16 @@ struct TVShowDetailView: View {
     }
 }
 
-// #Preview {
-//    guard let series = TVShow.preview().first else {
-//        return EmptyView()
-//    }
-//    return TVShowDetailView(viewModel: TVShowDetailViewModel(tvShow: series))
-// }
+#Preview {
+    class PreviewTVShowDetailViewModel: TVShowDetailViewModelProtocol {
+        var seasons: [Season : [Episode]] = [Season.preview().first!: Episode.preview()]
+        var isLoading: Bool = false
+        var errorMessage: String? = nil
+        var tvShow: TVShow = TVShow.preview().first!
+        func fetchSeasonsAndEpisodes() {}
+        func selectEpisode(_ episode: Episode) {}
+    }
+    
+    let viewModel = PreviewTVShowDetailViewModel()
+    return TVShowDetailView(viewModel: viewModel)
+}
