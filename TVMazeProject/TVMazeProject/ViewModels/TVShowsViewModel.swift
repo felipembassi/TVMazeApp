@@ -15,20 +15,20 @@ protocol TVShowsViewModelProtocol: ObservableObject {
     func selectTVShow(_ tvShow: TVShow)
 }
 
-final class TVShowsViewModel: TVShowsViewModelProtocol {
+final class TVShowsViewModel<Coordinator: CoordinatorProtocol>: TVShowsViewModelProtocol {
     @Published var shows: [TVShow] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
     @Published var searchText = ""
 
-    private weak var coordinator: AppCoordinator?
+    private weak var coordinator: Coordinator?
     private var currentPage = 0
     private var subscriptions = Set<AnyCancellable>()
     private let service: TVShowsServiceProtocol
 
     init(
         service: TVShowsServiceProtocol,
-        coordinator: AppCoordinator,
+        coordinator: Coordinator,
         debounceDelay: DispatchQueue.SchedulerTimeType.Stride = .milliseconds(500)
     ) {
         self.service = service

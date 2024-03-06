@@ -45,7 +45,7 @@ struct PinView<ViewModel: PinViewModelProtocol>: View {
     class PreviewPinViewModel: PinViewModelProtocol {
         var canUseBiometrics: Bool = true
         var pin: String = "1234"
-        var errorMessage: String? = nil
+        var errorMessage: String?
 
         func verifyPin() {}
         func authenticateWithBiometrics() {}

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		940C943C2B95135C0026E9F5 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C943B2B95135C0026E9F5 /* DesignSystem.swift */; };
+		942248F02B98DF6000C2482F /* MockAppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942248EF2B98DF6000C2482F /* MockAppDIContainer.swift */; };
+		942248F32B99055400C2482F /* XCTAssert+Concurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942248F22B99055400C2482F /* XCTAssert+Concurrency.swift */; };
 		942B54982B951BE8009CCA2C /* TVShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B54972B951BE8009CCA2C /* TVShowDetailView.swift */; };
 		942B549A2B951C4E009CCA2C /* EpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B54992B951C4E009CCA2C /* EpisodeRow.swift */; };
 		942B549C2B951CD1009CCA2C /* EpisodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B549B2B951CD1009CCA2C /* EpisodeDetailView.swift */; };
@@ -29,6 +31,7 @@
 		947E52E52B92541E00FFF340 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947E52E42B92541E00FFF340 /* SettingsView.swift */; };
 		947E52E92B92547E00FFF340 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947E52E82B92547E00FFF340 /* FavoritesView.swift */; };
 		947E52EB2B92551100FFF340 /* TVShowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947E52EA2B92551100FFF340 /* TVShowCard.swift */; };
+		94909BC42B98AA1300EF9D79 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94909BC32B98AA1300EF9D79 /* CoordinatorTests.swift */; };
 		94C9016C2B9689EE0026601F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C9016B2B9689EE0026601F /* SettingsViewModel.swift */; };
 		94C9016E2B968A0C0026601F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C9016D2B968A0C0026601F /* KeychainService.swift */; };
 		94C901742B969A6B0026601F /* MockKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C901732B969A6B0026601F /* MockKeychainService.swift */; };
@@ -36,7 +39,6 @@
 		94C9017B2B969B3D0026601F /* PinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C9017A2B969B3D0026601F /* PinViewModel.swift */; };
 		94C9017D2B96A0F10026601F /* PinViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C9017C2B96A0F10026601F /* PinViewModelTests.swift */; };
 		94C9017F2B96B79A0026601F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C9017E2B96B79A0026601F /* HomeViewModel.swift */; };
-		94C901812B96BA7D0026601F /* Authenticated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C901802B96BA7D0026601F /* Authenticated.swift */; };
 		94E6C1362B9134820031B647 /* TVMazeProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6C1352B9134820031B647 /* TVMazeProjectApp.swift */; };
 		94E6C1382B9134820031B647 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6C1372B9134820031B647 /* HomeView.swift */; };
 		94E6C13A2B9134820031B647 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6C1392B9134820031B647 /* Item.swift */; };
@@ -45,6 +47,7 @@
 		94E6C1532B9134830031B647 /* TVMazeProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6C1522B9134830031B647 /* TVMazeProjectUITests.swift */; };
 		94E6C1552B9134830031B647 /* TVMazeProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6C1542B9134830031B647 /* TVMazeProjectUITestsLaunchTests.swift */; };
 		94EA033E2B981AEB00F1455D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA033D2B981AEB00F1455D /* CustomButton.swift */; };
+		94EA03412B98293400F1455D /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA03402B98293400F1455D /* MockCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,8 @@
 
 /* Begin PBXFileReference section */
 		940C943B2B95135C0026E9F5 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		942248EF2B98DF6000C2482F /* MockAppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAppDIContainer.swift; sourceTree = "<group>"; };
+		942248F22B99055400C2482F /* XCTAssert+Concurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTAssert+Concurrency.swift"; sourceTree = "<group>"; };
 		942B54972B951BE8009CCA2C /* TVShowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailView.swift; sourceTree = "<group>"; };
 		942B54992B951C4E009CCA2C /* EpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRow.swift; sourceTree = "<group>"; };
 		942B549B2B951CD1009CCA2C /* EpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailView.swift; sourceTree = "<group>"; };
@@ -82,12 +87,12 @@
 		942B54C12B955491009CCA2C /* MockTVShowsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTVShowsService.swift; sourceTree = "<group>"; };
 		942B54C32B9554E4009CCA2C /* TVShowsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsViewModelTests.swift; sourceTree = "<group>"; };
 		942B54C52B95858E009CCA2C /* TVShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailViewModel.swift; sourceTree = "<group>"; };
-		942B54C82B965526009CCA2C /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		942B54CA2B96668A009CCA2C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		947E52E22B92540B00FFF340 /* TVShowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsView.swift; sourceTree = "<group>"; };
 		947E52E42B92541E00FFF340 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		947E52E82B92547E00FFF340 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		947E52EA2B92551100FFF340 /* TVShowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowCard.swift; sourceTree = "<group>"; };
+		94909BC32B98AA1300EF9D79 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		94C9016B2B9689EE0026601F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		94C9016D2B968A0C0026601F /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		94C901732B969A6B0026601F /* MockKeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockKeychainService.swift; sourceTree = "<group>"; };
@@ -95,7 +100,6 @@
 		94C9017A2B969B3D0026601F /* PinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewModel.swift; sourceTree = "<group>"; };
 		94C9017C2B96A0F10026601F /* PinViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewModelTests.swift; sourceTree = "<group>"; };
 		94C9017E2B96B79A0026601F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		94C901802B96BA7D0026601F /* Authenticated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticated.swift; sourceTree = "<group>"; };
 		94E6C1322B9134820031B647 /* TVMazeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVMazeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E6C1352B9134820031B647 /* TVMazeProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMazeProjectApp.swift; sourceTree = "<group>"; };
 		94E6C1372B9134820031B647 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 		94E6C1522B9134830031B647 /* TVMazeProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMazeProjectUITests.swift; sourceTree = "<group>"; };
 		94E6C1542B9134830031B647 /* TVMazeProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMazeProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		94EA033D2B981AEB00F1455D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		94EA03402B98293400F1455D /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +139,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		942248F12B99054200C2482F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				942248F22B99055400C2482F /* XCTAssert+Concurrency.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		942B54962B951B27009CCA2C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,24 +181,14 @@
 				942B54AF2B95491A009CCA2C /* APIEndpoints.swift */,
 				942B54B92B954F20009CCA2C /* TVShowsService.swift */,
 				94C9016D2B968A0C0026601F /* KeychainService.swift */,
-				94C901802B96BA7D0026601F /* Authenticated.swift */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		942B54BB2B955289009CCA2C /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				942B54BC2B955298009CCA2C /* MockNetworkService.swift */,
-				942B54BE2B9552DE009CCA2C /* TVShowsServiceTests.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		942B54C02B95545D009CCA2C /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				94C901722B969A580026601F /* Mocks */,
+				942B54BE2B9552DE009CCA2C /* TVShowsServiceTests.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -221,6 +224,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		94909BC22B98A76000EF9D79 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				94EA03402B98293400F1455D /* MockCoordinator.swift */,
+				942B54C12B955491009CCA2C /* MockTVShowsService.swift */,
+				94C901732B969A6B0026601F /* MockKeychainService.swift */,
+				942B54BC2B955298009CCA2C /* MockNetworkService.swift */,
+				942248EF2B98DF6000C2482F /* MockAppDIContainer.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		94C9016F2B968A930026601F /* TVShow */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,15 +247,6 @@
 				942B549F2B95246F009CCA2C /* SeriesHeaderView.swift */,
 			);
 			path = TVShow;
-			sourceTree = "<group>";
-		};
-		94C901722B969A580026601F /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				942B54C12B955491009CCA2C /* MockTVShowsService.swift */,
-				94C901732B969A6B0026601F /* MockKeychainService.swift */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 		94C901772B969AF50026601F /* ViewModels */ = {
@@ -255,7 +261,6 @@
 		94E6C1292B9134810031B647 = {
 			isa = PBXGroup;
 			children = (
-				942B54C82B965526009CCA2C /* swiftlint.yml */,
 				94E6C1342B9134820031B647 /* TVMazeProject */,
 				94E6C1472B9134830031B647 /* TVMazeProjectTests */,
 				94E6C1512B9134830031B647 /* TVMazeProjectUITests */,
@@ -302,9 +307,11 @@
 		94E6C1472B9134830031B647 /* TVMazeProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				94C901772B969AF50026601F /* ViewModels */,
+				942248F12B99054200C2482F /* Utils */,
+				94909BC22B98A76000EF9D79 /* Mocks */,
+				94EA033F2B98292500F1455D /* Coordinator */,
 				942B54C02B95545D009CCA2C /* Domain */,
-				942B54BB2B955289009CCA2C /* Network */,
+				94C901772B969AF50026601F /* ViewModels */,
 			);
 			path = TVMazeProjectTests;
 			sourceTree = "<group>";
@@ -316,6 +323,14 @@
 				94E6C1542B9134830031B647 /* TVMazeProjectUITestsLaunchTests.swift */,
 			);
 			path = TVMazeProjectUITests;
+			sourceTree = "<group>";
+		};
+		94EA033F2B98292500F1455D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				94909BC32B98AA1300EF9D79 /* CoordinatorTests.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,7 +491,6 @@
 				942B54B62B954BB2009CCA2C /* TVShowsViewModel.swift in Sources */,
 				942B549A2B951C4E009CCA2C /* EpisodeRow.swift in Sources */,
 				94EA033E2B981AEB00F1455D /* CustomButton.swift in Sources */,
-				94C901812B96BA7D0026601F /* Authenticated.swift in Sources */,
 				947E52E52B92541E00FFF340 /* SettingsView.swift in Sources */,
 				94C901792B969B260026601F /* PinView.swift in Sources */,
 				94C9016E2B968A0C0026601F /* KeychainService.swift in Sources */,
@@ -506,11 +520,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94909BC42B98AA1300EF9D79 /* CoordinatorTests.swift in Sources */,
 				942B54C22B955491009CCA2C /* MockTVShowsService.swift in Sources */,
 				942B54BF2B9552DE009CCA2C /* TVShowsServiceTests.swift in Sources */,
+				942248F32B99055400C2482F /* XCTAssert+Concurrency.swift in Sources */,
 				942B54BD2B955298009CCA2C /* MockNetworkService.swift in Sources */,
+				94EA03412B98293400F1455D /* MockCoordinator.swift in Sources */,
 				94C901742B969A6B0026601F /* MockKeychainService.swift in Sources */,
 				94C9017D2B96A0F10026601F /* PinViewModelTests.swift in Sources */,
+				942248F02B98DF6000C2482F /* MockAppDIContainer.swift in Sources */,
 				942B54C42B9554E4009CCA2C /* TVShowsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

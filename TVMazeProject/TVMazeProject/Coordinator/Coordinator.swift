@@ -18,15 +18,16 @@ protocol CoordinatorProtocol: ObservableObject {
     func pop()
     func popToRoot()
     func determineInitialView()
+    func setRootPageHome()
 }
 
 final class AppCoordinator: CoordinatorProtocol {
     @Published var path: NavigationPath = NavigationPath()
     @Published var rootPage: Page = .pin
 
-    private var diContainer: AppDependencyContainer
+    private var diContainer: AppDIContainer
 
-    init(diContainer: AppDependencyContainer) {
+    init(diContainer: AppDIContainer) {
         self.diContainer = diContainer
         determineInitialView()
     }
@@ -68,26 +69,6 @@ final class AppCoordinator: CoordinatorProtocol {
         }
     }
 
-    @ViewBuilder
-    func rootView() -> some View {
-        switch rootPage {
-        case .settings:
-            build(.settings)
-        case .pin:
-            build(.pin)
-        case .tvShow:
-            build(.tvShow)
-        case .favorites:
-            build(.favorites)
-        case .home:
-            build(.home)
-        case let .detail(tvShow: tvShow):
-            build(.detail(tvShow: tvShow))
-        case let .episodeDetail(tvShow: tvShow, episode: episode):
-            build(.episodeDetail(tvShow: tvShow, episode: episode))
-        }
-    }
-
     func determineInitialView() {
         let hasPin = diContainer.keychainService.loadPin() != nil
         rootPage = hasPin ? .pin : .settings
@@ -101,7 +82,7 @@ final class AppCoordinator: CoordinatorProtocol {
 struct AppCoordinatorView: View {
     @ObservedObject private var coordinator: AppCoordinator
 
-    init(diContainer: AppDependencyContainer) {
+    init(diContainer: AppDIContainer) {
         self.coordinator = AppCoordinator(diContainer: diContainer)
     }
 

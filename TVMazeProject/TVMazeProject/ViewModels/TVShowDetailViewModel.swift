@@ -14,7 +14,7 @@ protocol TVShowDetailViewModelProtocol: ObservableObject {
     func selectEpisode(_ episode: Episode)
 }
 
-final class TVShowDetailViewModel: TVShowDetailViewModelProtocol {
+final class TVShowDetailViewModel<Coordinator: CoordinatorProtocol>: TVShowDetailViewModelProtocol {
     @Published var seasons: [Season: [Episode]] = [:]
     @Published var isLoading = false
     @Published var errorMessage: String?
@@ -23,9 +23,9 @@ final class TVShowDetailViewModel: TVShowDetailViewModelProtocol {
 
     private let service: TVShowsServiceProtocol
 
-    private weak var coordinator: AppCoordinator?
+    private weak var coordinator: Coordinator?
 
-    init(tvShow: TVShow, service: TVShowsServiceProtocol, coordinator: AppCoordinator) {
+    init(tvShow: TVShow, service: TVShowsServiceProtocol, coordinator: Coordinator) {
         self.tvShow = tvShow
         self.service = service
         self.coordinator = coordinator
@@ -35,29 +35,29 @@ final class TVShowDetailViewModel: TVShowDetailViewModelProtocol {
         isLoading = true
         errorMessage = nil
 
-        Task {
+        Task { [weak self] in
+            guard let self else {
+                return
+            }
             do {
                 let fetchedSeasons = try await service.fetchSeasons(for: tvShow.id)
                 var tempSeasons: [Season: [Episode]] = [:]
-
+                
                 for season in fetchedSeasons {
                     do {
                         let episodes = try await service.fetchEpisodes(for: season.id)
                         tempSeasons[season] = episodes
                     } catch {
-                        // Handle or log episode fetch error
                         print("Error fetching episodes for season \(season.id): \(error)")
                         tempSeasons[season] = []
                     }
                 }
-
-                await MainActor.run {
-                    self.seasons = tempSeasons
-                }
+                
+                seasons = tempSeasons
             } catch {
-                self.errorMessage = "Failed to load seasons: \(error.localizedDescription)"
+                errorMessage = "Failed to load seasons: \(error.localizedDescription)"
             }
-            self.isLoading = false
+            isLoading = false
         }
     }
 

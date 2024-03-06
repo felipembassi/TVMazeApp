@@ -62,7 +62,7 @@ struct TVShowDetailView<ViewModel: TVShowDetailViewModelProtocol>: View {
     class PreviewTVShowDetailViewModel: TVShowDetailViewModelProtocol {
         var seasons: [Season: [Episode]] = [Season.preview().first!: Episode.preview()]
         var isLoading: Bool = false
-        var errorMessage: String? = nil
+        var errorMessage: String?
         var tvShow: TVShow = TVShow.preview().first!
         func fetchSeasonsAndEpisodes() {}
         func selectEpisode(_: Episode) {}

@@ -49,6 +49,12 @@ struct TVShow: Codable {
 
 struct Searched: Codable {
     let show: TVShow
+
+    static func preview() -> [Searched] {
+        (1 ... 5).compactMap { index in
+            Searched(show: TVShow.preview()[index - 1])
+        }
+    }
 }
 
 struct Season: Codable {

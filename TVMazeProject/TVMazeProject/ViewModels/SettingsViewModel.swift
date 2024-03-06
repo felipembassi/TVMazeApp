@@ -14,15 +14,15 @@ protocol SettingsViewModelProtocol: ObservableObject {
     func saveSettings()
 }
 
-final class SettingsViewModel: SettingsViewModelProtocol {
+final class SettingsViewModel<Coordinator: CoordinatorProtocol>: SettingsViewModelProtocol {
     @Published var pin: String = ""
     @Published var isBiometricsEnabled: Bool = false
     @Published var canEvaluatePolicy: Bool = false
 
     private let keychainService: KeychainServiceProtocol
-    private weak var coordinator: AppCoordinator?
+    private weak var coordinator: Coordinator?
 
-    init(keychainService: KeychainServiceProtocol, coordinator: AppCoordinator) {
+    init(keychainService: KeychainServiceProtocol, coordinator: Coordinator) {
         self.keychainService = keychainService
         self.coordinator = coordinator
         loadInitialSettings()

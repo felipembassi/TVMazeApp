@@ -2,109 +2,154 @@
 
 import Combine
 import XCTest
-@testable import TVMazeProject // Use your actual module name
+@testable import TVMazeProject
 
-@MainActor
 final class TVShowsViewModelTests: XCTestCase {
-    private var viewModel: TVShowsViewModel!
+    private var viewModel: TVShowsViewModel<MockCoordinator>!
     private var mockService: MockTVShowsService!
+    private var mockCoordinator: MockCoordinator!
     private var cancellables: Set<AnyCancellable>!
+    
+    enum MockError: Error {
+        case test
+    }
 
+    @MainActor
     override func setUp() {
         super.setUp()
         mockService = MockTVShowsService()
-        viewModel = TVShowsViewModel(service: mockService, debounceDelay: .zero)
+        mockCoordinator = MockCoordinator()
         cancellables = []
     }
 
     override func tearDown() {
         viewModel = nil
         mockService = nil
-        cancellables.forEach { $0.cancel() }
+        mockCoordinator = nil
         cancellables = nil
         super.tearDown()
     }
 
-    func testInitialState() {
-        XCTAssertFalse(viewModel.isLoading, "ViewModel should not be in loading state initially")
-        XCTAssertTrue(viewModel.shows.isEmpty, "ViewModel should initially have no shows")
+    @MainActor
+    func testInitialization() {
+        viewModel = TVShowsViewModel(
+            service: mockService,
+            coordinator: mockCoordinator,
+            debounceDelay: .milliseconds(0)
+        )
+        XCTAssertTrue(viewModel.shows.isEmpty)
+        XCTAssertFalse(viewModel.isLoading)
+        XCTAssertNil(viewModel.errorMessage)
     }
-
-    func testLoadMoreContentInitially() async {
-        mockService.showsToReturn = [TVShow](repeating: TVShow.mock, count: 10)
-        let showsLoaded = expectation(description: "Shows are loaded")
-        // Observe changes to the `shows` property
+    
+    @MainActor
+    func testLoadMoreShowsSuccess() async {
+        mockService.showsToReturn = TVShow.preview()
+        
+        let viewModel = TVShowsViewModel(
+            service: mockService,
+            coordinator: MockCoordinator(),
+            debounceDelay: .milliseconds(0)
+        )
+        
+        let showsExpectation = expectation(description: "Load tv shows")
+        showsExpectation.assertForOverFulfill = false
+        var shows: [TVShow] = []
+        
         viewModel.$shows
-            .dropFirst() // Ignore the initial value
-            .sink { shows in
-                if shows.count == 10 {
-                    showsLoaded.fulfill()
-                }
-            }
-            .store(in: &cancellables)
-
-        viewModel.loadMoreContentIfNeeded(currentItem: nil)
-        await fulfillment(of: [showsLoaded], timeout: 1.0)
-
-        XCTAssertEqual(viewModel.shows.count, 10, "Expected 10 shows to be loaded initially")
-    }
-
-    func testNoShowsAvailable() async {
-        mockService.showsToReturn = []
-        viewModel.loadMoreContentIfNeeded(currentItem: nil)
-        XCTAssertEqual(viewModel.shows.count, 0, "Expected no shows to be loaded")
-    }
-
-    func testErrorHandlingOnFetchFailure() async {
-        mockService.errorToThrow = NSError(
-            domain: "TestError",
-            code: 0,
-            userInfo: [NSLocalizedDescriptionKey: "Mock fetch error"]
-        )
-
-        let errorExpectation = expectation(description: "Error handling")
-        viewModel.$errorMessage
             .dropFirst()
-            .sink { errorMessage in
-                if errorMessage != nil {
-                    errorExpectation.fulfill()
-                }
+            .sink { loadedShows in
+                shows = loadedShows
+                showsExpectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.refreshShows()
+        
+        await fulfillment(of: [showsExpectation], timeout: 1.0)
+        
+        XCTAssertEqual(shows.count, mockService.showsToReturn.count)
+        XCTAssertFalse(viewModel.isLoading)
+        XCTAssertNil(viewModel.errorMessage)
+    }
+
+    @MainActor
+    func testLoadMoreShowsFailure() async {
+        mockService.errorToThrow = MockError.test
+        
+        let viewModel = TVShowsViewModel(
+            service: mockService,
+            coordinator: MockCoordinator(),
+            debounceDelay: .milliseconds(0)
+        )
+        
+        let showsExpectation = expectation(description: "Load tv shows error")
+        showsExpectation.assertForOverFulfill = false
+        
+        viewModel.$shows
+            .dropFirst()
+            .sink { _ in
+                showsExpectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.refreshShows()
+        
+        await fulfillment(of: [showsExpectation], timeout: 1.0)
+        
+        XCTAssertTrue(viewModel.shows.isEmpty)
+        XCTAssertFalse(viewModel.isLoading)
+        XCTAssertNotNil(viewModel.errorMessage)
+    }
+
+    @MainActor
+    func testSearchShowsSuccess() async {
+        let expectation = XCTestExpectation(description: "Debounce expectation")
+        let showsExpectation = XCTestExpectation(description: "Load tv shows")
+        showsExpectation.assertForOverFulfill = false
+        mockService.showsToReturn = TVShow.preview()
+
+        viewModel = TVShowsViewModel(
+            service: mockService,
+            coordinator: mockCoordinator,
+            debounceDelay: .milliseconds(0)
+        )
+        
+        viewModel.$searchText
+            .dropFirst()
+            .sink { _ in
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$shows
+            .dropFirst(2)
+            .sink { _ in
+                showsExpectation.fulfill()
             }
             .store(in: &cancellables)
 
-        viewModel.loadMoreContentIfNeeded(currentItem: nil)
+        viewModel.searchText = "Query"
 
-        // Wait for the observable error message
-        await fulfillment(of: [errorExpectation], timeout: 5.0)
+        await fulfillment(of: [expectation, showsExpectation], timeout: 1.0)
 
-        XCTAssertNotNil(viewModel.errorMessage, "Expected an error message after fetch failure")
+        XCTAssertEqual(viewModel.shows.count, TVShow.preview().count)
+        XCTAssertFalse(viewModel.isLoading)
+        XCTAssertNil(viewModel.errorMessage)
     }
-}
 
-extension TVShowsViewModelTests {
-    enum MockError: Error {
-        case test
-    }
-}
+    @MainActor
+    func testSelectShowTriggersNavigation() {
+        let show = TVShow.preview().first!
 
-extension TVShow {
-    static var mock: TVShow {
-        return TVShow(
-            id: 1,
-            url: "",
-            name: "Mock Show",
-            genres: [],
-            status: .running,
-            runtime: nil,
-            averageRuntime: nil,
-            premiered: nil,
-            ended: nil,
-            officialSite: nil,
-            schedule: Schedule(time: "", days: []),
-            rating: nil,
-            image: SeriesImage(medium: "", original: ""),
-            summary: "",
-            updated: 0
+        viewModel = TVShowsViewModel(
+            service: mockService,
+            coordinator: mockCoordinator,
+            debounceDelay: .milliseconds(0)
         )
+        
+        viewModel.selectTVShow(show)
+
+        XCTAssertEqual(mockCoordinator.pushedPages.count, 1)
     }
 }

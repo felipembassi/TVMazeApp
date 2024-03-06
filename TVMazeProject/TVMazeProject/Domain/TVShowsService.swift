@@ -17,7 +17,7 @@ protocol TVShowsServiceProtocol {
 struct TVShowsService: TVShowsServiceProtocol {
     private let networkService: NetworkServiceProtocol
 
-    init(networkService: NetworkServiceProtocol = NetworkService()) {
+    init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
     }
 

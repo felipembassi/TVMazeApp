@@ -9,21 +9,24 @@ protocol HomeViewModelProtocol: ObservableObject {
     func startSettingsCoordinator() -> AnyView
 }
 
-final class HomeViewModel: HomeViewModelProtocol {
-    private weak var coordinator: AppCoordinator?
+final class HomeViewModel<Coordinator: CoordinatorProtocol>: HomeViewModelProtocol {
+    private weak var coordinator: Coordinator?
 
-    init(coordinator: AppCoordinator) {
+    init(coordinator: Coordinator) {
         self.coordinator = coordinator
     }
 
+    @ViewBuilder
     func startTVShowCoordinator() -> AnyView {
         AnyView(coordinator?.build(.tvShow))
     }
 
+    @ViewBuilder
     func startFavoritesCoordinator() -> AnyView {
         AnyView(coordinator?.build(.favorites))
     }
 
+    @ViewBuilder
     func startSettingsCoordinator() -> AnyView {
         AnyView(coordinator?.build(.settings))
     }

@@ -12,15 +12,15 @@ protocol PinViewModelProtocol: ObservableObject {
     func authenticateWithBiometrics()
 }
 
-final class PinViewModel: PinViewModelProtocol {
+final class PinViewModel<Coordinator: CoordinatorProtocol>: PinViewModelProtocol {
     @Published var pin: String = ""
     @Published var errorMessage: String?
     @Published var canUseBiometrics: Bool = false
 
     private let keychainService: KeychainServiceProtocol
-    private weak var coordinator: AppCoordinator?
+    private weak var coordinator: Coordinator?
 
-    init(keychainService: KeychainServiceProtocol, coordinator: AppCoordinator) {
+    init(keychainService: KeychainServiceProtocol, coordinator: Coordinator) {
         self.keychainService = keychainService
         self.coordinator = coordinator
     }
