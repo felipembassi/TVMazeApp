@@ -10,7 +10,7 @@ protocol SettingsViewModelProtocol: ObservableObject {
     var pin: String { get set }
     var isBiometricsEnabled: Bool { get set }
     var canEvaluatePolicy: Bool { get set }
-    
+
     func saveSettings()
 }
 

@@ -89,8 +89,11 @@ final class AppCoordinator: CoordinatorProtocol {
     }
 
     func determineInitialView() {
-//        let hasPin = diContainer.keychainService.loadPin() != nil
-//        rootPage = hasPin ? .pin : .settings
+        let hasPin = diContainer.keychainService.loadPin() != nil
+        rootPage = hasPin ? .pin : .settings
+    }
+
+    func setRootPageHome() {
         rootPage = .home
     }
 }

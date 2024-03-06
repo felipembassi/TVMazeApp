@@ -44,6 +44,7 @@
 		94E6C13F2B9134830031B647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94E6C13E2B9134830031B647 /* Preview Assets.xcassets */; };
 		94E6C1532B9134830031B647 /* TVMazeProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6C1522B9134830031B647 /* TVMazeProjectUITests.swift */; };
 		94E6C1552B9134830031B647 /* TVMazeProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6C1542B9134830031B647 /* TVMazeProjectUITestsLaunchTests.swift */; };
+		94EA033E2B981AEB00F1455D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA033D2B981AEB00F1455D /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		94E6C14E2B9134830031B647 /* TVMazeProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMazeProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E6C1522B9134830031B647 /* TVMazeProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMazeProjectUITests.swift; sourceTree = "<group>"; };
 		94E6C1542B9134830031B647 /* TVMazeProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMazeProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		94EA033D2B981AEB00F1455D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				942B549D2B9523C7009CCA2C /* AiringScheduleView.swift */,
 				942B54A12B9525EB009CCA2C /* RatingStarsView.swift */,
 				94C901782B969B260026601F /* PinView.swift */,
+				94EA033D2B981AEB00F1455D /* CustomButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				94C9016C2B9689EE0026601F /* SettingsViewModel.swift in Sources */,
 				942B54B62B954BB2009CCA2C /* TVShowsViewModel.swift in Sources */,
 				942B549A2B951C4E009CCA2C /* EpisodeRow.swift in Sources */,
+				94EA033E2B981AEB00F1455D /* CustomButton.swift in Sources */,
 				94C901812B96BA7D0026601F /* Authenticated.swift in Sources */,
 				947E52E52B92541E00FFF340 /* SettingsView.swift in Sources */,
 				94C901792B969B260026601F /* PinView.swift in Sources */,

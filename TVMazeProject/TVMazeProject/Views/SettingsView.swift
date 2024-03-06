@@ -9,6 +9,7 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
         Form {
             Section(header: Text("Security")) {
                 SecureField("Set PIN", text: $viewModel.pin)
+                    .textContentType(.oneTimeCode)
                 if viewModel.canEvaluatePolicy {
                     Toggle("Enable Fingerprint/Face ID", isOn: $viewModel.isBiometricsEnabled)
                 }
@@ -17,6 +18,7 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
             Button("Save Settings") {
                 viewModel.saveSettings()
             }
+            .disabled(viewModel.pin.isEmpty)
         }
         .navigationTitle("Settings")
     }
@@ -27,9 +29,9 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
         var pin: String = "1234"
         var isBiometricsEnabled: Bool = false
         var canEvaluatePolicy: Bool = false
-        
+
         func saveSettings() {}
     }
     let viewModel = PreviewSettingsViewModel()
-    return SettingsView(viewModel:viewModel)
+    return SettingsView(viewModel: viewModel)
 }

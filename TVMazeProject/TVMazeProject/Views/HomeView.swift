@@ -33,11 +33,11 @@ struct HomeView<ViewModel: HomeViewModelProtocol>: View {
         func startTVShowCoordinator() -> AnyView {
             AnyView(EmptyView())
         }
-        
+
         func startFavoritesCoordinator() -> AnyView {
             AnyView(EmptyView())
         }
-        
+
         func startSettingsCoordinator() -> AnyView {
             AnyView(EmptyView())
         }

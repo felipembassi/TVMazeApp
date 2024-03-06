@@ -6,7 +6,8 @@ import LocalAuthentication
 protocol PinViewModelProtocol: ObservableObject {
     var pin: String { get set }
     var errorMessage: String? { get set }
-    
+    var canUseBiometrics: Bool { get }
+
     func verifyPin()
     func authenticateWithBiometrics()
 }
@@ -14,6 +15,7 @@ protocol PinViewModelProtocol: ObservableObject {
 final class PinViewModel: PinViewModelProtocol {
     @Published var pin: String = ""
     @Published var errorMessage: String?
+    @Published var canUseBiometrics: Bool = false
 
     private let keychainService: KeychainServiceProtocol
     private weak var coordinator: AppCoordinator?
@@ -31,7 +33,7 @@ final class PinViewModel: PinViewModelProtocol {
 
         if pin == storedPin {
             errorMessage = nil
-            coordinator?.determineInitialView()
+            coordinator?.setRootPageHome()
         } else {
             errorMessage = "Incorrect PIN. Please try again."
         }
@@ -56,5 +58,12 @@ final class PinViewModel: PinViewModelProtocol {
                 }
             }
         }
+    }
+
+    private func checkBiometricSupport() {
+        let context = LAContext()
+        var error: NSError?
+
+        canUseBiometrics = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
     }
 }
