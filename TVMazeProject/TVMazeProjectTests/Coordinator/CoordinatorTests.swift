@@ -16,7 +16,6 @@ final class CoordinatorTests: XCTestCase {
     override func tearDownWithError() throws {
         coordinator = nil
         mockDIContainer = nil
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     @MainActor
@@ -67,6 +66,6 @@ final class CoordinatorTests: XCTestCase {
     func testDetermineInitialViewForUnauthenticatedUser() {
         mockDIContainer.keychainService.deletePin()
         coordinator.determineInitialView()
-        XCTAssertEqual(coordinator.rootPage, .settings, "Initial view was not set correctly for user without pin.")
+        XCTAssertEqual(coordinator.rootPage, .home, "Initial view was not set correctly for user without pin.")
     }
 }

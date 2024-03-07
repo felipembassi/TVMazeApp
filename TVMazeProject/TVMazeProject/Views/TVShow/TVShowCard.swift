@@ -7,11 +7,7 @@ struct TVShowCard: View {
 
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: tvshow.image.original)) { image in
-                image.resizable()
-            } placeholder: {
-                ProgressView()
-            }
+            CustomAsyncImage(urlString: tvshow.image?.original)
             .aspectRatio(contentMode: .fill)
             .frame(width: 150, height: 200)
             .cornerRadius(10)

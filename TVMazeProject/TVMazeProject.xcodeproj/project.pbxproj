@@ -10,6 +10,7 @@
 		940C943C2B95135C0026E9F5 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C943B2B95135C0026E9F5 /* DesignSystem.swift */; };
 		942248F02B98DF6000C2482F /* MockAppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942248EF2B98DF6000C2482F /* MockAppDIContainer.swift */; };
 		942248F32B99055400C2482F /* XCTAssert+Concurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942248F22B99055400C2482F /* XCTAssert+Concurrency.swift */; };
+		942248F52B994C4600C2482F /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942248F42B994C4600C2482F /* CustomAsyncImage.swift */; };
 		942B54982B951BE8009CCA2C /* TVShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B54972B951BE8009CCA2C /* TVShowDetailView.swift */; };
 		942B549A2B951C4E009CCA2C /* EpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B54992B951C4E009CCA2C /* EpisodeRow.swift */; };
 		942B549C2B951CD1009CCA2C /* EpisodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B549B2B951CD1009CCA2C /* EpisodeDetailView.swift */; };
@@ -71,6 +72,9 @@
 		940C943B2B95135C0026E9F5 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		942248EF2B98DF6000C2482F /* MockAppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAppDIContainer.swift; sourceTree = "<group>"; };
 		942248F22B99055400C2482F /* XCTAssert+Concurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTAssert+Concurrency.swift"; sourceTree = "<group>"; };
+		942248F42B994C4600C2482F /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
+		942248F92B994E8600C2482F /* TVMazeProject.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TVMazeProject.xctestplan; sourceTree = "<group>"; };
+		942248FA2B994FD700C2482F /* UnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = UnitTests.xctestplan; path = ../UnitTests.xctestplan; sourceTree = "<group>"; };
 		942B54972B951BE8009CCA2C /* TVShowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailView.swift; sourceTree = "<group>"; };
 		942B54992B951C4E009CCA2C /* EpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRow.swift; sourceTree = "<group>"; };
 		942B549B2B951CD1009CCA2C /* EpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailView.swift; sourceTree = "<group>"; };
@@ -147,6 +151,33 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		942248F62B994CFE00C2482F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				94EA033D2B981AEB00F1455D /* CustomButton.swift */,
+				942248F42B994C4600C2482F /* CustomAsyncImage.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		942248F72B994D4E00C2482F /* Tab Views */ = {
+			isa = PBXGroup;
+			children = (
+				94E6C1372B9134820031B647 /* HomeView.swift */,
+				947E52E42B92541E00FFF340 /* SettingsView.swift */,
+				947E52E82B92547E00FFF340 /* FavoritesView.swift */,
+			);
+			path = "Tab Views";
+			sourceTree = "<group>";
+		};
+		942248F82B994D6200C2482F /* PinView */ = {
+			isa = PBXGroup;
+			children = (
+				94C901782B969B260026601F /* PinView.swift */,
+			);
+			path = PinView;
+			sourceTree = "<group>";
+		};
 		942B54962B951B27009CCA2C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,14 +243,12 @@
 		947E52E12B9253F700FFF340 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				942248F82B994D6200C2482F /* PinView */,
+				942248F72B994D4E00C2482F /* Tab Views */,
+				942248F62B994CFE00C2482F /* Components */,
 				94C9016F2B968A930026601F /* TVShow */,
-				94E6C1372B9134820031B647 /* HomeView.swift */,
-				947E52E42B92541E00FFF340 /* SettingsView.swift */,
-				947E52E82B92547E00FFF340 /* FavoritesView.swift */,
 				942B549D2B9523C7009CCA2C /* AiringScheduleView.swift */,
 				942B54A12B9525EB009CCA2C /* RatingStarsView.swift */,
-				94C901782B969B260026601F /* PinView.swift */,
-				94EA033D2B981AEB00F1455D /* CustomButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,6 +290,8 @@
 		94E6C1292B9134810031B647 = {
 			isa = PBXGroup;
 			children = (
+				942248F92B994E8600C2482F /* TVMazeProject.xctestplan */,
+				942248FA2B994FD700C2482F /* UnitTests.xctestplan */,
 				94E6C1342B9134820031B647 /* TVMazeProject */,
 				94E6C1472B9134830031B647 /* TVMazeProjectTests */,
 				94E6C1512B9134830031B647 /* TVMazeProjectUITests */,
@@ -487,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				947E52E92B92547E00FFF340 /* FavoritesView.swift in Sources */,
+				942248F52B994C4600C2482F /* CustomAsyncImage.swift in Sources */,
 				94C9016C2B9689EE0026601F /* SettingsViewModel.swift in Sources */,
 				942B54B62B954BB2009CCA2C /* TVShowsViewModel.swift in Sources */,
 				942B549A2B951C4E009CCA2C /* EpisodeRow.swift in Sources */,
@@ -558,6 +590,139 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		943950C32B99734700AC4D0E /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited) TEST";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Test;
+		};
+		943950C42B99734700AC4D0E /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TVMazeProject/Preview Content\"";
+				DEVELOPMENT_TEAM = WH7DC8GTYG;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = InnunovaTI.TVMazeProject;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Test;
+		};
+		943950C52B99734700AC4D0E /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WH7DC8GTYG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = InnunovaTI.TVMazeProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TVMazeProject.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TVMazeProject";
+			};
+			name = Test;
+		};
+		943950C62B99734700AC4D0E /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WH7DC8GTYG;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = InnunovaTI.TVMazeProjectUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TVMazeProject;
+			};
+			name = Test;
+		};
 		94E6C1562B9134830031B647 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -822,6 +987,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94E6C1562B9134830031B647 /* Debug */,
+				943950C32B99734700AC4D0E /* Test */,
 				94E6C1572B9134830031B647 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -831,6 +997,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94E6C1592B9134830031B647 /* Debug */,
+				943950C42B99734700AC4D0E /* Test */,
 				94E6C15A2B9134830031B647 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -840,6 +1007,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94E6C15C2B9134830031B647 /* Debug */,
+				943950C52B99734700AC4D0E /* Test */,
 				94E6C15D2B9134830031B647 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -849,6 +1017,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94E6C15F2B9134830031B647 /* Debug */,
+				943950C62B99734700AC4D0E /* Test */,
 				94E6C1602B9134830031B647 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

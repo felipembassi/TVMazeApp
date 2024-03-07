@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "12CCC0E7-A761-4B96-B37C-D36BB55D9C7E",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:TVMazeProject.xcodeproj",
+        "identifier" : "94E6C1432B9134830031B647",
+        "name" : "TVMazeProjectTests"
+      }
+    }
+  ],
+  "version" : 1
+}

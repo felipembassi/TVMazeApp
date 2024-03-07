@@ -7,13 +7,12 @@ struct TVShow: Codable {
     let url: String
     let name: String
     let genres: [String]
-    let status: Status
     let runtime, averageRuntime: Int?
     let premiered, ended: String?
     let officialSite: String?
     let schedule: Schedule
     let rating: Rating?
-    let image: SeriesImage
+    let image: SeriesImage?
     let summary: String?
     let updated: Int
 
@@ -28,7 +27,6 @@ struct TVShow: Codable {
                 url: "https://example.com/series\(seriesIndex)",
                 name: "Series \(seriesIndex)",
                 genres: ["Drama", "Sci-Fi"],
-                status: .running,
                 runtime: 45,
                 averageRuntime: 45,
                 premiered: "2021-09-01",
@@ -117,12 +115,6 @@ enum Day: String, Codable, Hashable {
     case thursday = "Thursday"
     case tuesday = "Tuesday"
     case wednesday = "Wednesday"
-}
-
-enum Status: String, Codable {
-    case ended = "Ended"
-    case running = "Running"
-    case toBeDetermined = "To Be Determined"
 }
 
 // MARK: - Rating

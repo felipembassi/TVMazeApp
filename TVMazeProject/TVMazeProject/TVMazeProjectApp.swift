@@ -30,7 +30,11 @@ struct TVMazeProjectApp: App {
 
     var body: some Scene {
         WindowGroup {
+#if TEST
+            EmptyView()
+#else
             AppCoordinatorView(diContainer: appDIContainer)
+#endif
         }
         .modelContainer(sharedModelContainer)
     }

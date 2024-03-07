@@ -13,6 +13,7 @@ protocol CoordinatorProtocol: ObservableObject {
     associatedtype ContentView: View
     var path: NavigationPath { get set }
     var rootPage: Page { get set }
+    var rootView: AnyView { get set }
     func push(_ page: Page)
     func build(_ page: Page) -> ContentView
     func pop()
@@ -23,12 +24,18 @@ protocol CoordinatorProtocol: ObservableObject {
 
 final class AppCoordinator: CoordinatorProtocol {
     @Published var path: NavigationPath = NavigationPath()
-    @Published var rootPage: Page = .pin
+    @Published var rootPage: Page = .pin {
+        didSet {
+            rootView = AnyView(build(rootPage))
+        }
+    }
+    @Published var rootView: AnyView
 
     private var diContainer: AppDIContainer
 
     init(diContainer: AppDIContainer) {
         self.diContainer = diContainer
+        self.rootView = AnyView(Text("Initializing..."))
         determineInitialView()
     }
 
@@ -71,7 +78,7 @@ final class AppCoordinator: CoordinatorProtocol {
 
     func determineInitialView() {
         let hasPin = diContainer.keychainService.loadPin() != nil
-        rootPage = hasPin ? .pin : .settings
+        rootPage = hasPin ? .pin : .home
     }
 
     func setRootPageHome() {
@@ -88,7 +95,7 @@ struct AppCoordinatorView: View {
 
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            coordinator.build(coordinator.rootPage)
+            coordinator.rootView
                 .navigationDestination(for: Page.self) { page in
                     coordinator.build(page)
                 }

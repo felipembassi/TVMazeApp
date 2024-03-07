@@ -10,9 +10,6 @@ struct TVShowDetailView<ViewModel: TVShowDetailViewModelProtocol>: View {
             seriesHeader
             contentSection
         }
-        .onAppear {
-            viewModel.fetchSeasonsAndEpisodes()
-        }
         .navigationTitle(viewModel.tvShow.name)
         .navigationBarTitleDisplayMode(.inline)
     }

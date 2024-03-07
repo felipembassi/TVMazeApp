@@ -13,6 +13,7 @@ class MockCoordinator: CoordinatorProtocol {
     var popCalled = false
     var popToRootCalled = false
     var initialViewDetermined = false
+    var rootView: AnyView = AnyView(Text("testing"))
 
     func push(_ page: Page) {
         pushedPages.append(page)

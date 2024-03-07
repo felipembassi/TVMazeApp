@@ -7,11 +7,7 @@ struct SeriesHeaderView: View {
     var name: String
 
     var body: some View {
-        AsyncImage(url: URL(string: tvShow.image.original)) { image in
-            image.resizable()
-        } placeholder: {
-            ProgressView()
-        }
+        CustomAsyncImage(urlString: tvShow.image?.original)
         .aspectRatio(contentMode: .fit)
         .listRowInsets(EdgeInsets())
         .frame(maxWidth: .infinity)

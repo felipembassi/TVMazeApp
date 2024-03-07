@@ -7,15 +7,9 @@ struct EpisodeRow: View {
 
     var body: some View {
         HStack {
-            if let imageUrl = episode.image?.medium, let url = URL(string: imageUrl) {
-                AsyncImage(url: url) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(width: 50, height: 50)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-            }
+            CustomAsyncImage(urlString: episode.image?.medium)
+            .frame(width: 50, height: 50)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
             VStack(alignment: .leading) {
                 Text(episode.name)
                     .fontWeight(.medium)

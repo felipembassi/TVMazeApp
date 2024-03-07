@@ -17,7 +17,6 @@ struct PinView<ViewModel: PinViewModelProtocol>: View {
                 .padding(.horizontal, 24)
                 .keyboardType(.numberPad)
 
-            // Error message
             if let errorMessage = viewModel.errorMessage, !errorMessage.isEmpty {
                 Text(errorMessage)
                     .foregroundColor(.red)

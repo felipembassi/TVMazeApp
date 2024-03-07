@@ -5,7 +5,6 @@ import XCTest
 @testable import TVMazeProject
 
 final class TVShowsViewModelTests: XCTestCase {
-    private var viewModel: TVShowsViewModel<MockCoordinator>!
     private var mockService: MockTVShowsService!
     private var mockCoordinator: MockCoordinator!
     private var cancellables: Set<AnyCancellable>!
@@ -23,7 +22,6 @@ final class TVShowsViewModelTests: XCTestCase {
     }
 
     override func tearDown() {
-        viewModel = nil
         mockService = nil
         mockCoordinator = nil
         cancellables = nil
@@ -32,7 +30,7 @@ final class TVShowsViewModelTests: XCTestCase {
 
     @MainActor
     func testInitialization() {
-        viewModel = TVShowsViewModel(
+        let viewModel = TVShowsViewModel(
             service: mockService,
             coordinator: mockCoordinator,
             debounceDelay: .milliseconds(0)
@@ -53,11 +51,10 @@ final class TVShowsViewModelTests: XCTestCase {
         )
         
         let showsExpectation = expectation(description: "Load tv shows")
-        showsExpectation.assertForOverFulfill = false
         var shows: [TVShow] = []
         
         viewModel.$shows
-            .dropFirst()
+            .dropFirst(2)
             .sink { loadedShows in
                 shows = loadedShows
                 showsExpectation.fulfill()
@@ -86,7 +83,7 @@ final class TVShowsViewModelTests: XCTestCase {
         let showsExpectation = expectation(description: "Load tv shows error")
         showsExpectation.assertForOverFulfill = false
         
-        viewModel.$shows
+        viewModel.$errorMessage
             .dropFirst()
             .sink { _ in
                 showsExpectation.fulfill()
@@ -106,10 +103,9 @@ final class TVShowsViewModelTests: XCTestCase {
     func testSearchShowsSuccess() async {
         let expectation = XCTestExpectation(description: "Debounce expectation")
         let showsExpectation = XCTestExpectation(description: "Load tv shows")
-        showsExpectation.assertForOverFulfill = false
         mockService.showsToReturn = TVShow.preview()
 
-        viewModel = TVShowsViewModel(
+        let viewModel = TVShowsViewModel(
             service: mockService,
             coordinator: mockCoordinator,
             debounceDelay: .milliseconds(0)
@@ -142,7 +138,7 @@ final class TVShowsViewModelTests: XCTestCase {
     func testSelectShowTriggersNavigation() {
         let show = TVShow.preview().first!
 
-        viewModel = TVShowsViewModel(
+        let viewModel = TVShowsViewModel(
             service: mockService,
             coordinator: mockCoordinator,
             debounceDelay: .milliseconds(0)
