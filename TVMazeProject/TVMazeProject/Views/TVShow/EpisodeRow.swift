@@ -14,7 +14,7 @@ struct EpisodeRow: View {
                 Text(episode.name)
                     .fontWeight(.medium)
                     .foregroundColor(DesignSystem.Colors.foreground)
-                Text("Season \(episode.season), Episode \(episode.number)")
+                Text("Season \(episode.season)" + (episode.number != nil ? ", Episode \(episode.number!)" : ""))
                     .font(.subheadline)
                     .foregroundColor(DesignSystem.Colors.foreground)
             }

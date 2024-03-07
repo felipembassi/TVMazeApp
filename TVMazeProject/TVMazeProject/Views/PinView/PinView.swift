@@ -41,7 +41,7 @@ struct PinView<ViewModel: PinViewModelProtocol>: View {
 }
 
 #Preview {
-    class PreviewPinViewModel: PinViewModelProtocol {
+    final class PreviewPinViewModel: PinViewModelProtocol {
         var canUseBiometrics: Bool = true
         var pin: String = "1234"
         var errorMessage: String?

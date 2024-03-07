@@ -51,7 +51,7 @@ final class PinViewModel<Coordinator: CoordinatorProtocol>: PinViewModelProtocol
             ) { [weak self] success, _ in
                 DispatchQueue.main.async { [weak self] in
                     if success {
-                        self?.coordinator?.determineInitialView()
+                        self?.coordinator?.setRootPageHome()
                     } else {
                         self?.errorMessage = "Incorrect PIN. Please try again."
                     }

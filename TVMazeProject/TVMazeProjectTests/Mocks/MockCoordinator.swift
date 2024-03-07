@@ -4,7 +4,7 @@ import SwiftUI
 import XCTest
 @testable import TVMazeProject
 
-class MockCoordinator: CoordinatorProtocol {
+final class MockCoordinator: CoordinatorProtocol {
     typealias ContentView = AnyView
 
     var path: NavigationPath = NavigationPath()

@@ -3,11 +3,13 @@
 import SwiftUI
 
 struct SeriesHeaderView: View {
+    // This should be a SeriesHeaderView ViewModel instead
     var tvShow: TVShow
     var name: String
+    var image: String?
 
     var body: some View {
-        CustomAsyncImage(urlString: tvShow.image?.original)
+        CustomAsyncImage(urlString: image)
         .aspectRatio(contentMode: .fit)
         .listRowInsets(EdgeInsets())
         .frame(maxWidth: .infinity)
@@ -40,5 +42,5 @@ struct SeriesHeaderView: View {
     guard let tvShow = TVShow.preview().first else {
         return EmptyView()
     }
-    return SeriesHeaderView(tvShow: tvShow, name: "Episode")
+    return SeriesHeaderView(tvShow: tvShow, name: "Episode", image: tvShow.image?.original)
 }

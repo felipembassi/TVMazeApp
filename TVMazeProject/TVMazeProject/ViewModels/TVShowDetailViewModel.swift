@@ -11,14 +11,14 @@ protocol TVShowDetailViewModelProtocol: ObservableObject {
     var tvShow: TVShow { get }
 
     func selectEpisode(_ episode: Episode)
+    func fetchSeasonsAndEpisodes()
 }
 
 final class TVShowDetailViewModel<Coordinator: CoordinatorProtocol>: TVShowDetailViewModelProtocol {
     @Published var seasons: [Season: [Episode]] = [:]
     @Published var isLoading = false
     @Published var errorMessage: String?
-
-    let tvShow: TVShow
+    @Published var tvShow: TVShow
 
     private let service: TVShowsServiceProtocol
 
@@ -28,11 +28,10 @@ final class TVShowDetailViewModel<Coordinator: CoordinatorProtocol>: TVShowDetai
         self.tvShow = tvShow
         self.service = service
         self.coordinator = coordinator
-        
         fetchSeasonsAndEpisodes()
     }
 
-    private func fetchSeasonsAndEpisodes() {
+    func fetchSeasonsAndEpisodes() {
         isLoading = true
         errorMessage = nil
 

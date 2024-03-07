@@ -8,7 +8,7 @@
 //
 @testable import TVMazeProject
 
-class MockKeychainService: KeychainServiceProtocol {
+final class MockKeychainService: KeychainServiceProtocol {
     var pin: String?
     var biometricsEnabled: Bool = false
 

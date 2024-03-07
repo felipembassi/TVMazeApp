@@ -51,7 +51,7 @@ struct TVShowsView<ViewModel: TVShowsViewModelProtocol>: View {
 }
 
 #Preview {
-    class PreviewTVShowsViewModel: TVShowsViewModelProtocol {
+    final class PreviewTVShowsViewModel: TVShowsViewModelProtocol {
         func loadDataIfNeeded(currentItem: TVShow?) {
             let tvShow = TVShow(
                 id: 300,

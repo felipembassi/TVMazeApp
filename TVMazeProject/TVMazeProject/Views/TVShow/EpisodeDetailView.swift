@@ -8,10 +8,10 @@ struct EpisodeDetailView: View {
 
     var body: some View {
         ScrollView {
-            SeriesHeaderView(tvShow: tvShow, name: episode.name)
+            SeriesHeaderView(tvShow: tvShow, name: episode.name, image: episode.image?.original)
                 .padding()
         }
-        .navigationTitle("\(tvShow.name) - S\(episode.season)E\(episode.number)")
+        .navigationTitle(episode.name)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

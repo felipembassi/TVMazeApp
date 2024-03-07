@@ -3,7 +3,7 @@
 import Foundation
 @testable import TVMazeProject
 
-class MockTVShowsService: TVShowsServiceProtocol {
+final class MockTVShowsService: TVShowsServiceProtocol {
     var showsToReturn: [TVShow] = []
     var seasonsToReturn: [Season] = []
     var episodesToReturn: [Episode] = []

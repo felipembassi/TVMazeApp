@@ -25,7 +25,7 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
 }
 
 #Preview {
-    class PreviewSettingsViewModel: SettingsViewModelProtocol {
+    final class PreviewSettingsViewModel: SettingsViewModelProtocol {
         var pin: String = "1234"
         var isBiometricsEnabled: Bool = false
         var canEvaluatePolicy: Bool = false

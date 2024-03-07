@@ -56,7 +56,7 @@ struct TVShowDetailView<ViewModel: TVShowDetailViewModelProtocol>: View {
 }
 
 #Preview {
-    class PreviewTVShowDetailViewModel: TVShowDetailViewModelProtocol {
+    final class PreviewTVShowDetailViewModel: TVShowDetailViewModelProtocol {
         var seasons: [Season: [Episode]] = [Season.preview().first!: Episode.preview()]
         var isLoading: Bool = false
         var errorMessage: String?

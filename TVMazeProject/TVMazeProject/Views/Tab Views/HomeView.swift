@@ -29,7 +29,7 @@ struct HomeView<ViewModel: HomeViewModelProtocol>: View {
 }
 
 #Preview {
-    class PreviewHomeViewModel: HomeViewModelProtocol {
+    final class PreviewHomeViewModel: HomeViewModelProtocol {
         func startTVShowCoordinator() -> AnyView {
             AnyView(EmptyView())
         }
