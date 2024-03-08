@@ -12,6 +12,9 @@ protocol TVShowsServiceProtocol {
     func searchShows(query: String) async throws -> [TVShow]
     func fetchSeasons(for showID: Int) async throws -> [Season]
     func fetchEpisodes(for seasonID: Int) async throws -> [Episode]
+    func fetchPerson(for page: Int) async throws -> [Person]
+    func fetchCastCredits(for person: Int) async throws -> [CastCredit]
+    func searchPerson(query: String) async throws -> [Person]
 }
 
 struct TVShowsService: TVShowsServiceProtocol {
@@ -40,5 +43,21 @@ struct TVShowsService: TVShowsServiceProtocol {
     func fetchEpisodes(for seasonID: Int) async throws -> [Episode] {
         let endpoint = APIEndpoints.episodes(season: seasonID).urlString
         return try await networkService.fetchData(from: endpoint)
+    }
+    
+    func fetchPerson(for page: Int) async throws -> [Person] {
+        let endpoint = APIEndpoints.person(page: page).urlString
+        return try await networkService.fetchData(from: endpoint)
+    }
+    
+    func fetchCastCredits(for person: Int) async throws -> [CastCredit] {
+        let endpoint = APIEndpoints.castcredits(person: person).urlString
+        return try await networkService.fetchData(from: endpoint)
+    }
+    
+    func searchPerson(query: String) async throws -> [Person] {
+        let endpoint = APIEndpoints.searchPerson(query: query).urlString
+        let searchResults: [SearchedPerson] = try await networkService.fetchData(from: endpoint)
+        return searchResults.compactMap { $0.person }
     }
 }

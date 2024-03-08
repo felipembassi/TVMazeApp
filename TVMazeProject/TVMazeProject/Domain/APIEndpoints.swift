@@ -7,6 +7,9 @@ enum APIEndpoints {
     case search(query: String)
     case seasons(tvShow: Int)
     case episodes(season: Int)
+    case person(page: Int)
+    case castcredits(person: Int)
+    case searchPerson(query: String)
 
     var urlString: String {
         switch self {
@@ -19,6 +22,13 @@ enum APIEndpoints {
             return "\(APIEndpoints.baseURL)/shows/\(tvShow)/seasons"
         case let .episodes(season):
             return "\(APIEndpoints.baseURL)/seasons/\(season)/episodes"
+        case let .person(page):
+            return "\(APIEndpoints.baseURL)/people?page=\(page)"
+        case let .castcredits(person):
+            return "\(APIEndpoints.baseURL)/people/\(person)/castcredits?embed=show"
+        case let .searchPerson(query):
+            let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            return "\(APIEndpoints.baseURL)/search/people?q=\(encodedQuery)"
         }
     }
 }

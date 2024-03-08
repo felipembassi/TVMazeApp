@@ -129,6 +129,54 @@ struct SeriesImage: Codable {
     let medium, original: String
 }
 
+// MARK: - Person
+
+struct SearchedPerson: Codable {
+    let person: Person
+}
+
+struct Person: Codable {
+    let id: Int
+    let name: String
+    let image: SeriesImage?
+    
+    static func preview() -> [Person] {
+        [
+            Person(
+                id: 5453,
+                name: "Bryan McClure",
+                image: SeriesImage(
+                    medium: "https://static.tvmaze.com/uploads/images/medium_portrait/189/474940.jpg",
+                    original: "https://static.tvmaze.com/uploads/images/original_untouched/189/474940.jpg"
+                )
+            ),
+            Person(
+                id: 14245,
+                name: "Bryan Cranston",
+                image: SeriesImage(
+                    medium: "https://static.tvmaze.com/uploads/images/medium_portrait/195/488839.jpg",
+                    original: "https://static.tvmaze.com/uploads/images/original_untouched/195/488839.jpg"
+                )
+            )
+        ]
+        
+    }
+}
+
+struct CastCredit: Codable {
+    let embedded: Embedded
+    
+    enum CodingKeys: String, CodingKey {
+        case embedded = "_embedded"
+    }
+}
+
+struct Embedded: Codable {
+    let show: TVShow
+}
+
+// MARK: - extensions
+
 extension TVShow: Hashable {
     static func == (lhs: TVShow, rhs: TVShow) -> Bool {
         lhs.id == rhs.id
@@ -151,6 +199,16 @@ extension Season: Hashable {
 
 extension Episode: Hashable {
     static func == (lhs: Episode, rhs: Episode) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+extension Person: Hashable {
+    static func == (lhs: Person, rhs: Person) -> Bool {
         lhs.id == rhs.id
     }
 

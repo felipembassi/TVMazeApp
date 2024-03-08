@@ -1,21 +1,26 @@
-// TVShowsViewModel.swift
+//
+//  PersonViewModel.swift
+//  TVMazeProject
+//
+//  Created by Felipe Moreira Tarrio Bassi on 07/03/24.
+//
 
 import Combine
 import Foundation
 
 @MainActor
-protocol TVShowsViewModelProtocol: ObservableObject {
-    var shows: [TVShow] { get set }
+protocol PersonViewModelProtocol: ObservableObject {
+    var persons: [Person] { get set }
     var isLoading: Bool { get set }
     var searchText: String { get set }
     var errorMessage: String? { get set }
-    func refreshShows()
-    func selectTVShow(_ tvShow: TVShow)
-    func loadDataIfNeeded(currentItem: TVShow?)
+    func refreshPersons()
+    func selectPerson(_ person: Person)
+    func loadDataIfNeeded(currentItem: Person?)
 }
 
-final class TVShowsViewModel<Coordinator: CoordinatorProtocol>: TVShowsViewModelProtocol {
-    @Published var shows: [TVShow] = []
+final class PersonViewModel<Coordinator: CoordinatorProtocol>: PersonViewModelProtocol {
+    @Published var persons: [Person] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
     @Published var searchText: String
@@ -36,17 +41,17 @@ final class TVShowsViewModel<Coordinator: CoordinatorProtocol>: TVShowsViewModel
         self.coordinator = coordinator
         self.searchText = ""
         addSubscribers(debounceDelay: debounceDelay)
-        loadMoreShows()
+        loadPersons()
     }
 
-    func refreshShows() {
+    func refreshPersons() {
         currentPage = 0
-        shows = []
-        loadMoreShows()
+        persons = []
+        loadPersons()
     }
     
-    func selectTVShow(_ tvShow: TVShow) {
-        coordinator?.push(.detail(tvShow: tvShow))
+    func selectPerson(_ person: Person) {
+        coordinator?.push(.personDetail(person: person))
     }
     
     private func addSubscribers(debounceDelay: DispatchQueue.SchedulerTimeType.Stride) {
@@ -55,26 +60,26 @@ final class TVShowsViewModel<Coordinator: CoordinatorProtocol>: TVShowsViewModel
             .removeDuplicates()
             .debounce(for: debounceDelay, scheduler: DispatchQueue.main)
             .sink { [weak self] searchText in
-                self?.searchShowsDebounced(query: searchText)
+                self?.searchPersonsDebounced(query: searchText)
             }
             .store(in: &cancellables)
     }
 
-    private func searchShowsDebounced(query: String) {
+    private func searchPersonsDebounced(query: String) {
         searchTask?.cancel()
         loadingTask?.cancel()
         guard !query.isEmpty else {
-            refreshShows()
+            refreshPersons()
             return
         }
 
         isLoading = true
-        shows = []
+        persons = []
 
         searchTask = Task {
             do {
-                let searchResults = try await service.searchShows(query: query)
-                shows = searchResults
+                let searchResults = try await service.searchPerson(query: query)
+                persons = searchResults
                 errorMessage = nil
             } catch {
                 errorMessage = "Failed to load search results: \(error.localizedDescription)"
@@ -83,17 +88,17 @@ final class TVShowsViewModel<Coordinator: CoordinatorProtocol>: TVShowsViewModel
         }
     }
 
-    private func loadMoreShows() {
+    private func loadPersons() {
         loadingTask?.cancel()
         loadingTask = Task { [weak self] in
             guard let self else { return }
-            for await tvShows in fetchDataStream() {
-                shows.append(contentsOf: tvShows)
+            for await newPersons in fetchDataStream() {
+                persons.append(contentsOf: newPersons)
             }
         }
     }
     
-    private func fetchDataStream() -> AsyncStream<[TVShow]> {
+    private func fetchDataStream() -> AsyncStream<[Person]> {
         AsyncStream { continuation in
             Task { [weak self] in
                 guard let self else {
@@ -101,12 +106,12 @@ final class TVShowsViewModel<Coordinator: CoordinatorProtocol>: TVShowsViewModel
                     return
                 }
                 do {
-                    let newShows = try await service.fetchShows(page: currentPage)
+                    let persons = try await service.fetchPerson(for: currentPage)
                     try Task.checkCancellation()
                     
                     currentPage += 1
                     errorMessage = nil
-                    continuation.yield(newShows)
+                    continuation.yield(persons)
                     continuation.finish()
                 } catch {
                     errorMessage = error.localizedDescription
@@ -116,17 +121,17 @@ final class TVShowsViewModel<Coordinator: CoordinatorProtocol>: TVShowsViewModel
         }
     }
     
-    func loadDataIfNeeded(currentItem: TVShow?) {
+    func loadDataIfNeeded(currentItem: Person?) {
         guard let currentItem = currentItem,
-              let itemIndex = shows.firstIndex(of: currentItem),
+              let itemIndex = persons.firstIndex(of: currentItem),
               !isLoading
         else { return }
         
         let prefetchThresholdPercentage = 0.70
-        let thresholdIndex = Int(Double(shows.count) * prefetchThresholdPercentage)
+        let thresholdIndex = Int(Double(persons.count) * prefetchThresholdPercentage)
         
         if itemIndex >= thresholdIndex {
-            loadMoreShows()
+            loadPersons()
         }
     }
     

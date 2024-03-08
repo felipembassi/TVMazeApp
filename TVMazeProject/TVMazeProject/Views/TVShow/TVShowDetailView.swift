@@ -16,7 +16,7 @@ struct TVShowDetailView<ViewModel: TVShowDetailViewModelProtocol>: View {
 
     private var seriesHeader: some View {
         Section {
-            SeriesHeaderView(tvShow: viewModel.tvShow, name: viewModel.tvShow.name)
+            SeriesHeaderView(tvShow: viewModel.tvShow, name: viewModel.tvShow.name, image: viewModel.tvShow.image?.original)
         }
     }
 
@@ -45,7 +45,7 @@ struct TVShowDetailView<ViewModel: TVShowDetailViewModelProtocol>: View {
         Section {
             if let episodes = viewModel.seasons[season] {
                 ForEach(episodes, id: \.self) { episode in
-                    EpisodeRow(episode: episode)
+                    EpisodeRowView(episode: episode)
                         .onTapGesture {
                             viewModel.selectEpisode(episode)
                         }

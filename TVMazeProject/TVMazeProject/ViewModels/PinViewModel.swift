@@ -7,6 +7,7 @@ protocol PinViewModelProtocol: ObservableObject {
     var pin: String { get set }
     var errorMessage: String? { get set }
     var canUseBiometrics: Bool { get }
+    var isLoading: Bool { get set }
 
     func verifyPin()
     func authenticateWithBiometrics()
@@ -16,6 +17,7 @@ final class PinViewModel<Coordinator: CoordinatorProtocol>: PinViewModelProtocol
     @Published var pin: String = ""
     @Published var errorMessage: String?
     @Published var canUseBiometrics: Bool = false
+    @Published var isLoading: Bool = false
 
     private let keychainService: KeychainServiceProtocol
     private weak var coordinator: Coordinator?
@@ -23,6 +25,7 @@ final class PinViewModel<Coordinator: CoordinatorProtocol>: PinViewModelProtocol
     init(keychainService: KeychainServiceProtocol, coordinator: Coordinator) {
         self.keychainService = keychainService
         self.coordinator = coordinator
+        checkBiometricSupport()
     }
 
     func verifyPin() {
@@ -40,16 +43,18 @@ final class PinViewModel<Coordinator: CoordinatorProtocol>: PinViewModelProtocol
     }
 
     func authenticateWithBiometrics() {
+        isLoading = true
         let context = LAContext()
         var error: NSError?
 
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Log in with your fingerprint"
+            let reason = "Log in"
             context.evaluatePolicy(
                 .deviceOwnerAuthenticationWithBiometrics,
                 localizedReason: reason
             ) { [weak self] success, _ in
                 DispatchQueue.main.async { [weak self] in
+                    self?.isLoading = false
                     if success {
                         self?.coordinator?.setRootPageHome()
                     } else {

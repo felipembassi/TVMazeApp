@@ -16,10 +16,15 @@ struct HomeView<ViewModel: HomeViewModelProtocol>: View {
                 .tabItem {
                     Label("Favorites", systemImage: "heart.fill")
                 }
+            
+            viewModel.startPersonsCoordinator()
+                .tabItem {
+                    Label("Persons", systemImage: "person.fill")
+                }
 
             viewModel.startSettingsCoordinator()
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("Settings", systemImage: "gearshape.fill")
                 }
         }
         .background(DesignSystem.Colors.background)
@@ -30,6 +35,10 @@ struct HomeView<ViewModel: HomeViewModelProtocol>: View {
 
 #Preview {
     final class PreviewHomeViewModel: HomeViewModelProtocol {
+        func startPersonsCoordinator() -> AnyView {
+            AnyView(EmptyView())
+        }
+        
         func startTVShowCoordinator() -> AnyView {
             AnyView(EmptyView())
         }

@@ -7,6 +7,7 @@ protocol HomeViewModelProtocol: ObservableObject {
     func startTVShowCoordinator() -> AnyView
     func startFavoritesCoordinator() -> AnyView
     func startSettingsCoordinator() -> AnyView
+    func startPersonsCoordinator() -> AnyView
 }
 
 final class HomeViewModel<Coordinator: CoordinatorProtocol>: HomeViewModelProtocol {
@@ -24,6 +25,11 @@ final class HomeViewModel<Coordinator: CoordinatorProtocol>: HomeViewModelProtoc
     @ViewBuilder
     func startFavoritesCoordinator() -> AnyView {
         AnyView(coordinator?.build(.favorites))
+    }
+    
+    @ViewBuilder
+    func startPersonsCoordinator() -> AnyView {
+        AnyView(coordinator?.build(.persons))
     }
 
     @ViewBuilder

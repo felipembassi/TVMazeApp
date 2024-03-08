@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct TVShowCard: View {
+struct TVShowCardView: View {
     var tvshow: TVShow
 
     var body: some View {
@@ -26,5 +26,5 @@ struct TVShowCard: View {
     guard let series = TVShow.preview().first else {
         return EmptyView()
     }
-    return TVShowCard(tvshow: series)
+    return TVShowCardView(tvshow: series)
 }

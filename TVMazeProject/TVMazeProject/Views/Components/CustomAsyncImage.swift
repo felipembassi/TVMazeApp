@@ -21,7 +21,10 @@ struct CustomAsyncImage: View {
             AsyncImage(url: url) { phase in
                 switch phase {
                 case .success(let image):
-                    image.resizable()
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipped()
                 case .failure:
                     placeholder
                 default:

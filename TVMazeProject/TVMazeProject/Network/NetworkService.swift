@@ -18,6 +18,11 @@ struct NetworkService: NetworkServiceProtocol {
             throw URLError(.badServerResponse)
         }
 
-        return try decoder.decode(T.self, from: data)
+        do {
+            return try decoder.decode(T.self, from: data)
+        } catch {
+            debugPrint(error)
+            throw error
+        }
     }
 }

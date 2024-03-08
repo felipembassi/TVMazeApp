@@ -3,8 +3,9 @@
 import SwiftUI
 
 enum Page: Hashable {
-    case home, settings, pin, tvShow, favorites
+    case home, settings, pin, tvShow, favorites, persons
     case detail(tvShow: TVShow)
+    case personDetail(person: Person)
     case episodeDetail(tvShow: TVShow, episode: Episode)
 }
 
@@ -73,6 +74,12 @@ final class AppCoordinator: CoordinatorProtocol {
         case .pin:
             let viewModel = PinViewModel(keychainService: diContainer.keychainService, coordinator: self)
             PinView(viewModel: viewModel)
+        case .persons:
+            let viewModel = PersonViewModel(service: diContainer.service, coordinator: self)
+            PersonsView(viewModel: viewModel)
+        case let .personDetail(person):
+            let viewModel = PersonDetailViewModel(person: person, service: diContainer.service, coordinator: self)
+            PersonDetailView(viewModel: viewModel)
         }
     }
 

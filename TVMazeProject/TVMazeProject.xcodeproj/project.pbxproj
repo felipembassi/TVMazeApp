@@ -12,7 +12,7 @@
 		942248F32B99055400C2482F /* XCTAssert+Concurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942248F22B99055400C2482F /* XCTAssert+Concurrency.swift */; };
 		942248F52B994C4600C2482F /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942248F42B994C4600C2482F /* CustomAsyncImage.swift */; };
 		942B54982B951BE8009CCA2C /* TVShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B54972B951BE8009CCA2C /* TVShowDetailView.swift */; };
-		942B549A2B951C4E009CCA2C /* EpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B54992B951C4E009CCA2C /* EpisodeRow.swift */; };
+		942B549A2B951C4E009CCA2C /* EpisodeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B54992B951C4E009CCA2C /* EpisodeRowView.swift */; };
 		942B549C2B951CD1009CCA2C /* EpisodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B549B2B951CD1009CCA2C /* EpisodeDetailView.swift */; };
 		942B549E2B9523C7009CCA2C /* AiringScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B549D2B9523C7009CCA2C /* AiringScheduleView.swift */; };
 		942B54A02B95246F009CCA2C /* SeriesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B549F2B95246F009CCA2C /* SeriesHeaderView.swift */; };
@@ -33,7 +33,7 @@
 		947E52E32B92540B00FFF340 /* TVShowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947E52E22B92540B00FFF340 /* TVShowsView.swift */; };
 		947E52E52B92541E00FFF340 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947E52E42B92541E00FFF340 /* SettingsView.swift */; };
 		947E52E92B92547E00FFF340 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947E52E82B92547E00FFF340 /* FavoritesView.swift */; };
-		947E52EB2B92551100FFF340 /* TVShowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947E52EA2B92551100FFF340 /* TVShowCard.swift */; };
+		947E52EB2B92551100FFF340 /* TVShowCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947E52EA2B92551100FFF340 /* TVShowCardView.swift */; };
 		94909BC42B98AA1300EF9D79 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94909BC32B98AA1300EF9D79 /* CoordinatorTests.swift */; };
 		94C9016C2B9689EE0026601F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C9016B2B9689EE0026601F /* SettingsViewModel.swift */; };
 		94C9016E2B968A0C0026601F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C9016D2B968A0C0026601F /* KeychainService.swift */; };
@@ -51,6 +51,10 @@
 		94E6C1552B9134830031B647 /* TVMazeProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6C1542B9134830031B647 /* TVMazeProjectUITestsLaunchTests.swift */; };
 		94EA033E2B981AEB00F1455D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA033D2B981AEB00F1455D /* CustomButton.swift */; };
 		94EA03412B98293400F1455D /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA03402B98293400F1455D /* MockCoordinator.swift */; };
+		94F1132D2B9A5B7B004411D7 /* PersonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F1132C2B9A5B7A004411D7 /* PersonsView.swift */; };
+		94F1132F2B9A6658004411D7 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F1132E2B9A6658004411D7 /* PersonViewModel.swift */; };
+		94F113312B9A87E0004411D7 /* PersonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F113302B9A87E0004411D7 /* PersonDetailViewModel.swift */; };
+		94F113332B9A894D004411D7 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F113322B9A894D004411D7 /* PersonDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +82,7 @@
 		942248F92B994E8600C2482F /* TVMazeProject.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TVMazeProject.xctestplan; sourceTree = "<group>"; };
 		942248FA2B994FD700C2482F /* UnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = UnitTests.xctestplan; path = ../UnitTests.xctestplan; sourceTree = "<group>"; };
 		942B54972B951BE8009CCA2C /* TVShowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailView.swift; sourceTree = "<group>"; };
-		942B54992B951C4E009CCA2C /* EpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRow.swift; sourceTree = "<group>"; };
+		942B54992B951C4E009CCA2C /* EpisodeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRowView.swift; sourceTree = "<group>"; };
 		942B549B2B951CD1009CCA2C /* EpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailView.swift; sourceTree = "<group>"; };
 		942B549D2B9523C7009CCA2C /* AiringScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiringScheduleView.swift; sourceTree = "<group>"; };
 		942B549F2B95246F009CCA2C /* SeriesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesHeaderView.swift; sourceTree = "<group>"; };
@@ -99,7 +103,7 @@
 		947E52E22B92540B00FFF340 /* TVShowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsView.swift; sourceTree = "<group>"; };
 		947E52E42B92541E00FFF340 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		947E52E82B92547E00FFF340 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
-		947E52EA2B92551100FFF340 /* TVShowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowCard.swift; sourceTree = "<group>"; };
+		947E52EA2B92551100FFF340 /* TVShowCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowCardView.swift; sourceTree = "<group>"; };
 		94909BC32B98AA1300EF9D79 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		94C9016B2B9689EE0026601F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		94C9016D2B968A0C0026601F /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
@@ -120,6 +124,10 @@
 		94E6C1542B9134830031B647 /* TVMazeProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMazeProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		94EA033D2B981AEB00F1455D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		94EA03402B98293400F1455D /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
+		94F1132C2B9A5B7A004411D7 /* PersonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsView.swift; sourceTree = "<group>"; };
+		94F1132E2B9A6658004411D7 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
+		94F113302B9A87E0004411D7 /* PersonDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewModel.swift; sourceTree = "<group>"; };
+		94F113322B9A894D004411D7 /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +178,7 @@
 				94E6C1372B9134820031B647 /* HomeView.swift */,
 				947E52E42B92541E00FFF340 /* SettingsView.swift */,
 				947E52E82B92547E00FFF340 /* FavoritesView.swift */,
+				94F1132C2B9A5B7A004411D7 /* PersonsView.swift */,
 			);
 			path = "Tab Views";
 			sourceTree = "<group>";
@@ -206,6 +215,8 @@
 				94C9016B2B9689EE0026601F /* SettingsViewModel.swift */,
 				94C9017A2B969B3D0026601F /* PinViewModel.swift */,
 				94C9017E2B96B79A0026601F /* HomeViewModel.swift */,
+				94F1132E2B9A6658004411D7 /* PersonViewModel.swift */,
+				94F113302B9A87E0004411D7 /* PersonDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -253,6 +264,8 @@
 				94C9016F2B968A930026601F /* TVShow */,
 				942B549D2B9523C7009CCA2C /* AiringScheduleView.swift */,
 				942B54A12B9525EB009CCA2C /* RatingStarsView.swift */,
+				942B549F2B95246F009CCA2C /* SeriesHeaderView.swift */,
+				94F113322B9A894D004411D7 /* PersonDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -273,11 +286,10 @@
 			isa = PBXGroup;
 			children = (
 				947E52E22B92540B00FFF340 /* TVShowsView.swift */,
-				947E52EA2B92551100FFF340 /* TVShowCard.swift */,
 				942B54972B951BE8009CCA2C /* TVShowDetailView.swift */,
-				942B54992B951C4E009CCA2C /* EpisodeRow.swift */,
+				947E52EA2B92551100FFF340 /* TVShowCardView.swift */,
+				942B54992B951C4E009CCA2C /* EpisodeRowView.swift */,
 				942B549B2B951CD1009CCA2C /* EpisodeDetailView.swift */,
-				942B549F2B95246F009CCA2C /* SeriesHeaderView.swift */,
 			);
 			path = TVShow;
 			sourceTree = "<group>";
@@ -527,12 +539,13 @@
 				942248F52B994C4600C2482F /* CustomAsyncImage.swift in Sources */,
 				94C9016C2B9689EE0026601F /* SettingsViewModel.swift in Sources */,
 				942B54B62B954BB2009CCA2C /* TVShowsViewModel.swift in Sources */,
-				942B549A2B951C4E009CCA2C /* EpisodeRow.swift in Sources */,
+				942B549A2B951C4E009CCA2C /* EpisodeRowView.swift in Sources */,
+				94F1132D2B9A5B7B004411D7 /* PersonsView.swift in Sources */,
 				94EA033E2B981AEB00F1455D /* CustomButton.swift in Sources */,
 				947E52E52B92541E00FFF340 /* SettingsView.swift in Sources */,
 				94C901792B969B260026601F /* PinView.swift in Sources */,
 				94C9016E2B968A0C0026601F /* KeychainService.swift in Sources */,
-				947E52EB2B92551100FFF340 /* TVShowCard.swift in Sources */,
+				947E52EB2B92551100FFF340 /* TVShowCardView.swift in Sources */,
 				940C943C2B95135C0026E9F5 /* DesignSystem.swift in Sources */,
 				942B54BA2B954F20009CCA2C /* TVShowsService.swift in Sources */,
 				94C9017F2B96B79A0026601F /* HomeViewModel.swift in Sources */,
@@ -543,11 +556,14 @@
 				94E6C13A2B9134820031B647 /* Item.swift in Sources */,
 				942B54CB2B96668A009CCA2C /* Coordinator.swift in Sources */,
 				942B54B02B95491A009CCA2C /* APIEndpoints.swift in Sources */,
+				94F1132F2B9A6658004411D7 /* PersonViewModel.swift in Sources */,
+				94F113332B9A894D004411D7 /* PersonDetailView.swift in Sources */,
 				942B549C2B951CD1009CCA2C /* EpisodeDetailView.swift in Sources */,
 				942B54A42B952648009CCA2C /* Models.swift in Sources */,
 				942B54982B951BE8009CCA2C /* TVShowDetailView.swift in Sources */,
 				942B54B22B954943009CCA2C /* NetworkService.swift in Sources */,
 				942B549E2B9523C7009CCA2C /* AiringScheduleView.swift in Sources */,
+				94F113312B9A87E0004411D7 /* PersonDetailViewModel.swift in Sources */,
 				942B54C62B95858E009CCA2C /* TVShowDetailViewModel.swift in Sources */,
 				942B54A22B9525EB009CCA2C /* RatingStarsView.swift in Sources */,
 				94E6C1362B9134820031B647 /* TVMazeProjectApp.swift in Sources */,
@@ -666,6 +682,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TVMazeProject/Preview Content\"";
@@ -673,6 +690,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "To unlock the features of the App without typing the pin";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -686,6 +704,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = InnunovaTI.TVMazeProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -855,6 +874,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TVMazeProject/Preview Content\"";
@@ -862,6 +882,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "To unlock the features of the App without typing the pin";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -875,6 +896,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = InnunovaTI.TVMazeProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -886,6 +908,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TVMazeProject/Preview Content\"";
@@ -893,6 +916,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "To unlock the features of the App without typing the pin";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -906,6 +930,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = InnunovaTI.TVMazeProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct EpisodeRow: View {
+struct EpisodeRowView: View {
     let episode: Episode
 
     var body: some View {
@@ -24,7 +24,7 @@ struct EpisodeRow: View {
 
 #Preview {
     if let episode = Episode.preview().first {
-        return EpisodeRow(episode: episode)
+        return EpisodeRowView(episode: episode)
     } else {
         return EmptyView()
     }
