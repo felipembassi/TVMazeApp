@@ -1,6 +1,12 @@
 # TVMazeApp
 Application for listing TV series, using the API provided by the TVMaze website.
 
+## Running the app
+ - Preferably use Xcode 15.3
+ - Go to the project target under 'Signing & Capabilities' and change the team to 'none'
+
+<img width="500" alt="Screenshot 2024-03-08 at 19 07 17" src="https://github.com/felipembassi/TVMazeApp/assets/4182255/8cff7321-543d-4276-aad0-a7a0549e2399">
+
 ## Architecture Overview
 
 ### MVVM (Model-View-ViewModel)
