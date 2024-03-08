@@ -44,11 +44,11 @@ final class TVShowsViewModel<Coordinator: CoordinatorProtocol>: TVShowsViewModel
         shows = []
         loadMoreShows()
     }
-    
+
     func selectTVShow(_ tvShow: TVShow) {
         coordinator?.push(.detail(tvShow: tvShow))
     }
-    
+
     private func addSubscribers(debounceDelay: DispatchQueue.SchedulerTimeType.Stride) {
         $searchText
             .dropFirst()
@@ -92,7 +92,7 @@ final class TVShowsViewModel<Coordinator: CoordinatorProtocol>: TVShowsViewModel
             }
         }
     }
-    
+
     private func fetchDataStream() -> AsyncStream<[TVShow]> {
         AsyncStream { continuation in
             Task { [weak self] in
@@ -103,7 +103,7 @@ final class TVShowsViewModel<Coordinator: CoordinatorProtocol>: TVShowsViewModel
                 do {
                     let newShows = try await service.fetchShows(page: currentPage)
                     try Task.checkCancellation()
-                    
+
                     currentPage += 1
                     errorMessage = nil
                     continuation.yield(newShows)
@@ -115,21 +115,21 @@ final class TVShowsViewModel<Coordinator: CoordinatorProtocol>: TVShowsViewModel
             }
         }
     }
-    
+
     func loadDataIfNeeded(currentItem: TVShow?) {
         guard let currentItem = currentItem,
               let itemIndex = shows.firstIndex(of: currentItem),
               !isLoading
         else { return }
-        
+
         let prefetchThresholdPercentage = 0.70
         let thresholdIndex = Int(Double(shows.count) * prefetchThresholdPercentage)
-        
+
         if itemIndex >= thresholdIndex {
             loadMoreShows()
         }
     }
-    
+
     deinit {
         searchTask?.cancel()
         cancellables.forEach { $0.cancel() }

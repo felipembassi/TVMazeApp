@@ -1,4 +1,4 @@
-// TVShowCard.swift
+// TVShowCardView.swift
 
 import SwiftUI
 
@@ -8,9 +8,9 @@ struct TVShowCardView: View {
     var body: some View {
         VStack {
             CustomAsyncImage(urlString: tvshow.image?.original)
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 150, height: 200)
-            .cornerRadius(10)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 150, height: 200)
+                .cornerRadius(10)
 
             Text(tvshow.name)
                 .fontWeight(.medium)

@@ -1,23 +1,76 @@
 // Models.swift
 
 import Foundation
+import SwiftData
 
-struct TVShow: Codable {
+@Model
+final class TVShow: Codable {
+    enum CodingKeys: CodingKey {
+        case id
+        case url
+        case name
+        case genres
+        case schedule
+        case rating
+        case image
+        case summary
+    }
+
     let id: Int
     let url: String
     let name: String
     let genres: [String]
-    let runtime, averageRuntime: Int?
-    let premiered, ended: String?
-    let officialSite: String?
     let schedule: Schedule
     let rating: Rating?
     let image: SeriesImage?
     let summary: String?
-    let updated: Int
 
     var starRating: StarRating {
         StarRating(rating: rating?.average)
+    }
+
+    init(
+        id: Int,
+        url: String,
+        name: String,
+        genres: [String],
+        schedule: Schedule,
+        rating: Rating? = nil,
+        image: SeriesImage? = nil,
+        summary: String? = nil
+    ) {
+        self.id = id
+        self.url = url
+        self.name = name
+        self.genres = genres
+        self.schedule = schedule
+        self.rating = rating
+        self.image = image
+        self.summary = summary
+    }
+
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.url = try container.decode(String.self, forKey: .url)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.genres = try container.decode([String].self, forKey: .genres)
+        self.schedule = try container.decode(Schedule.self, forKey: .schedule)
+        self.rating = try container.decode(Rating.self, forKey: .rating)
+        self.image = try container.decode(SeriesImage.self, forKey: .image)
+        self.summary = try container.decode(String.self, forKey: .summary)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(url, forKey: .url)
+        try container.encode(name, forKey: .name)
+        try container.encode(genres, forKey: .genres)
+        try container.encode(schedule, forKey: .schedule)
+        try container.encode(rating, forKey: .rating)
+        try container.encode(image, forKey: .image)
+        try container.encode(summary, forKey: .summary)
     }
 
     static func preview() -> [TVShow] {
@@ -26,20 +79,14 @@ struct TVShow: Codable {
                 id: seriesIndex,
                 url: "https://example.com/series\(seriesIndex)",
                 name: "Series \(seriesIndex)",
-                genres: ["Drama", "Sci-Fi"],
-                runtime: 45,
-                averageRuntime: 45,
-                premiered: "2021-09-01",
-                ended: nil,
-                officialSite: "https://example.com/officialSiteSeries\(seriesIndex)",
+                genres: ["Action", "Adventure", "Fantasy"],
                 schedule: Schedule(time: "21:00", days: [.friday, .saturday]),
-                rating: Rating(average: 8.5),
+                rating: Rating(average: 10),
                 image: SeriesImage(
-                    medium: "https://static.tvmaze.com/uploads/images/medium_portrait/1/4600.jpg",
-                    original: "https://static.tvmaze.com/uploads/images/original_untouched/1/4600.jpg"
+                    medium: "https://static.tvmaze.com/uploads/images/medium_portrait/504/1262497.jpg",
+                    original: "https://static.tvmaze.com/uploads/images/original_untouched/504/1262497.jpg"
                 ),
-                summary: "Summary of Series \(seriesIndex)",
-                updated: 1_234_567_890
+                summary: "Summary of Series \(seriesIndex)"
             )
         }
     }
@@ -88,8 +135,8 @@ struct Episode: Codable {
                 season: mockSeason + 1,
                 summary: "Summary of Episode \(episodeIndex) of Season 1",
                 image: SeriesImage(
-                    medium: "https://static.tvmaze.com/uploads/images/original_untouched/1/4600.jpg",
-                    original: "https://static.tvmaze.com/uploads/images/original_untouched/1/4600.jpg"
+                    medium: "https://static.tvmaze.com/uploads/images/medium_landscape/293/734143.jpg",
+                    original: "https://static.tvmaze.com/uploads/images/original_untouched/293/734143.jpg"
                 ),
                 rating: Rating(average: Double(episodeIndex + 7) / 2.0)
             )
@@ -139,7 +186,7 @@ struct Person: Codable {
     let id: Int
     let name: String
     let image: SeriesImage?
-    
+
     static func preview() -> [Person] {
         [
             Person(
@@ -159,13 +206,12 @@ struct Person: Codable {
                 )
             )
         ]
-        
     }
 }
 
 struct CastCredit: Codable {
     let embedded: Embedded
-    
+
     enum CodingKeys: String, CodingKey {
         case embedded = "_embedded"
     }

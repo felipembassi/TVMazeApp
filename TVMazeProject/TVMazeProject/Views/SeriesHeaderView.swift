@@ -10,9 +10,9 @@ struct SeriesHeaderView: View {
 
     var body: some View {
         CustomAsyncImage(urlString: image)
-        .aspectRatio(contentMode: .fit)
-        .listRowInsets(EdgeInsets())
-        .frame(maxWidth: .infinity)
+            .aspectRatio(contentMode: .fit)
+            .listRowInsets(EdgeInsets())
+            .frame(maxWidth: .infinity)
 
         Text(name)
             .font(.title)

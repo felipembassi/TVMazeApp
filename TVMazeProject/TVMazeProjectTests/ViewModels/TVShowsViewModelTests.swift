@@ -8,7 +8,7 @@ final class TVShowsViewModelTests: XCTestCase {
     private var mockService: MockTVShowsService!
     private var mockCoordinator: MockCoordinator!
     private var cancellables: Set<AnyCancellable>!
-    
+
     enum MockError: Error {
         case test
     }
@@ -39,20 +39,20 @@ final class TVShowsViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isLoading)
         XCTAssertNil(viewModel.errorMessage)
     }
-    
+
     @MainActor
     func testLoadMoreShowsSuccess() async {
         mockService.showsToReturn = TVShow.preview()
-        
+
         let viewModel = TVShowsViewModel(
             service: mockService,
             coordinator: MockCoordinator(),
             debounceDelay: .milliseconds(0)
         )
-        
+
         let showsExpectation = expectation(description: "Load tv shows")
         var shows: [TVShow] = []
-        
+
         viewModel.$shows
             .dropFirst(2)
             .sink { loadedShows in
@@ -60,11 +60,11 @@ final class TVShowsViewModelTests: XCTestCase {
                 showsExpectation.fulfill()
             }
             .store(in: &cancellables)
-        
+
         viewModel.refreshShows()
-        
+
         await fulfillment(of: [showsExpectation], timeout: 1.0)
-        
+
         XCTAssertEqual(shows.count, mockService.showsToReturn.count)
         XCTAssertFalse(viewModel.isLoading)
         XCTAssertNil(viewModel.errorMessage)
@@ -73,27 +73,27 @@ final class TVShowsViewModelTests: XCTestCase {
     @MainActor
     func testLoadMoreShowsFailure() async {
         mockService.errorToThrow = MockError.test
-        
+
         let viewModel = TVShowsViewModel(
             service: mockService,
             coordinator: MockCoordinator(),
             debounceDelay: .milliseconds(0)
         )
-        
+
         let showsExpectation = expectation(description: "Load tv shows error")
         showsExpectation.assertForOverFulfill = false
-        
+
         viewModel.$errorMessage
             .dropFirst()
             .sink { _ in
                 showsExpectation.fulfill()
             }
             .store(in: &cancellables)
-        
+
         viewModel.refreshShows()
-        
+
         await fulfillment(of: [showsExpectation], timeout: 1.0)
-        
+
         XCTAssertTrue(viewModel.shows.isEmpty)
         XCTAssertFalse(viewModel.isLoading)
         XCTAssertNotNil(viewModel.errorMessage)
@@ -110,14 +110,14 @@ final class TVShowsViewModelTests: XCTestCase {
             coordinator: mockCoordinator,
             debounceDelay: .milliseconds(0)
         )
-        
+
         viewModel.$searchText
             .dropFirst()
             .sink { _ in
                 expectation.fulfill()
             }
             .store(in: &cancellables)
-        
+
         viewModel.$shows
             .dropFirst(2)
             .sink { _ in
@@ -143,7 +143,7 @@ final class TVShowsViewModelTests: XCTestCase {
             coordinator: mockCoordinator,
             debounceDelay: .milliseconds(0)
         )
-        
+
         viewModel.selectTVShow(show)
 
         XCTAssertEqual(mockCoordinator.pushedPages.count, 1)

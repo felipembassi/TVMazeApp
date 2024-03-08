@@ -17,7 +17,7 @@ struct TVMazeProjectApp: App {
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self
+            TVShow.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -30,11 +30,11 @@ struct TVMazeProjectApp: App {
 
     var body: some Scene {
         WindowGroup {
-#if TEST
+            #if TEST
             EmptyView()
-#else
+            #else
             AppCoordinatorView(diContainer: appDIContainer)
-#endif
+            #endif
         }
         .modelContainer(sharedModelContainer)
     }

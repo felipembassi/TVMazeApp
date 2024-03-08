@@ -16,11 +16,11 @@ struct CustomButton: View {
             }
         }.buttonStyle(PrimaryButtonStyle.primary)
     }
-    
+
     private var backgroundColor: Color {
         isEnabled ? .blue : .gray
     }
-    
+
     private var foregroundColor: Color {
         isEnabled ? .white : .secondary
     }
@@ -30,11 +30,11 @@ struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         PrimaryButton(configuration: configuration)
     }
-    
+
     private struct PrimaryButton: View {
         let configuration: ButtonStyle.Configuration
         @Environment(\.isEnabled) private var isEnabled: Bool
-        
+
         var body: some View {
             configuration.label
                 .multilineTextAlignment(.center)
@@ -44,16 +44,16 @@ struct PrimaryButtonStyle: ButtonStyle {
                 .foregroundColor(foregroundColor)
                 .cornerRadius(.infinity)
         }
-        
+
         private var foregroundColor: Color {
             isEnabled ? .white : .secondary
         }
-        
+
         func backgroundColor(isPressed: Bool) -> Color {
             guard isEnabled else {
                 return .blue
             }
-            
+
             return isPressed ? .black : .blue
         }
     }

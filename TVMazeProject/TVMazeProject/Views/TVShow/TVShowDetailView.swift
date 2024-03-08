@@ -1,10 +1,18 @@
 // TVShowDetailView.swift
 
 import SwiftUI
+import SwiftData
 
 struct TVShowDetailView<ViewModel: TVShowDetailViewModelProtocol>: View {
+    @Environment(\.modelContext) private var modelContainer
     @ObservedObject private(set) var viewModel: ViewModel
 
+    @Query var favorites: [TVShow]
+    
+    private var isFavorite: Bool {
+        favorites.contains(viewModel.tvShow)
+    }
+    
     var body: some View {
         List {
             seriesHeader
@@ -14,9 +22,18 @@ struct TVShowDetailView<ViewModel: TVShowDetailViewModelProtocol>: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private var seriesHeader: some View {
+    var seriesHeader: some View {
         Section {
             SeriesHeaderView(tvShow: viewModel.tvShow, name: viewModel.tvShow.name, image: viewModel.tvShow.image?.original)
+
+            Button(action: toggleFavorite) {
+                HStack {
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
+                        .foregroundColor(isFavorite ? .red : .gray)
+                    Text(isFavorite ? "Remove from Favorites" : "Add to Favorites")
+                        .foregroundColor(.primary)
+                }
+            }
         }
     }
 
@@ -52,6 +69,10 @@ struct TVShowDetailView<ViewModel: TVShowDetailViewModelProtocol>: View {
                 }
             }
         }
+    }
+    
+    private func toggleFavorite() {
+        isFavorite ? modelContainer.delete(viewModel.tvShow) : modelContainer.insert(viewModel.tvShow)
     }
 }
 

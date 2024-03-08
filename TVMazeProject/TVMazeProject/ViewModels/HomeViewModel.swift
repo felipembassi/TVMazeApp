@@ -26,7 +26,7 @@ final class HomeViewModel<Coordinator: CoordinatorProtocol>: HomeViewModelProtoc
     func startFavoritesCoordinator() -> AnyView {
         AnyView(coordinator?.build(.favorites))
     }
-    
+
     @ViewBuilder
     func startPersonsCoordinator() -> AnyView {
         AnyView(coordinator?.build(.persons))

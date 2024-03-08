@@ -1,9 +1,4 @@
-//
-//  PersonViewModel.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 07/03/24.
-//
+// PersonViewModel.swift
 
 import Combine
 import Foundation
@@ -49,11 +44,11 @@ final class PersonViewModel<Coordinator: CoordinatorProtocol>: PersonViewModelPr
         persons = []
         loadPersons()
     }
-    
+
     func selectPerson(_ person: Person) {
         coordinator?.push(.personDetail(person: person))
     }
-    
+
     private func addSubscribers(debounceDelay: DispatchQueue.SchedulerTimeType.Stride) {
         $searchText
             .dropFirst()
@@ -97,7 +92,7 @@ final class PersonViewModel<Coordinator: CoordinatorProtocol>: PersonViewModelPr
             }
         }
     }
-    
+
     private func fetchDataStream() -> AsyncStream<[Person]> {
         AsyncStream { continuation in
             Task { [weak self] in
@@ -108,7 +103,7 @@ final class PersonViewModel<Coordinator: CoordinatorProtocol>: PersonViewModelPr
                 do {
                     let persons = try await service.fetchPerson(for: currentPage)
                     try Task.checkCancellation()
-                    
+
                     currentPage += 1
                     errorMessage = nil
                     continuation.yield(persons)
@@ -120,21 +115,21 @@ final class PersonViewModel<Coordinator: CoordinatorProtocol>: PersonViewModelPr
             }
         }
     }
-    
+
     func loadDataIfNeeded(currentItem: Person?) {
         guard let currentItem = currentItem,
               let itemIndex = persons.firstIndex(of: currentItem),
               !isLoading
         else { return }
-        
+
         let prefetchThresholdPercentage = 0.70
         let thresholdIndex = Int(Double(persons.count) * prefetchThresholdPercentage)
-        
+
         if itemIndex >= thresholdIndex {
             loadPersons()
         }
     }
-    
+
     deinit {
         searchTask?.cancel()
         cancellables.forEach { $0.cancel() }

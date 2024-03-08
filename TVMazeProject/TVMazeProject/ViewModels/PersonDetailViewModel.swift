@@ -1,9 +1,4 @@
-//
-//  PersonDetailViewModel.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 07/03/24.
-//
+// PersonDetailViewModel.swift
 
 import Foundation
 
@@ -24,17 +19,17 @@ class PersonDetailViewModel<Coordinator: CoordinatorProtocol>: PersonDetailViewM
     @Published var tvShows: [TVShow] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
-    
+
     private let service: TVShowsServiceProtocol
     private weak var coordinator: Coordinator?
-    
+
     init(person: Person, service: TVShowsServiceProtocol, coordinator: Coordinator) {
         self.person = person
         self.service = service
         self.coordinator = coordinator
         fetchPersonDetails()
     }
-    
+
     func fetchPersonDetails() {
         isLoading = true
         errorMessage = nil
@@ -44,14 +39,14 @@ class PersonDetailViewModel<Coordinator: CoordinatorProtocol>: PersonDetailViewM
                 return
             }
             do {
-                tvShows = try await service.fetchCastCredits(for: person.id).compactMap{$0.embedded.show}
+                tvShows = try await service.fetchCastCredits(for: person.id).compactMap { $0.embedded.show }
             } catch {
                 errorMessage = "Failed to load seasons: \(error.localizedDescription)"
             }
             isLoading = false
         }
     }
-    
+
     func selectTVShow(_ tvShow: TVShow) {
         coordinator?.push(.detail(tvShow: tvShow))
     }

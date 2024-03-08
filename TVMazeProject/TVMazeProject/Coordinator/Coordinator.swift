@@ -30,6 +30,7 @@ final class AppCoordinator: CoordinatorProtocol {
             rootView = AnyView(build(rootPage))
         }
     }
+
     @Published var rootView: AnyView
 
     private var diContainer: AppDIContainer
@@ -67,7 +68,8 @@ final class AppCoordinator: CoordinatorProtocol {
         case let .episodeDetail(tvShow, episode):
             EpisodeDetailView(tvShow: tvShow, episode: episode)
         case .favorites:
-            FavoritesView()
+            let viewModel = FavoritesViewModel(coordinator: self)
+            FavoritesView(viewModel: viewModel)
         case .settings:
             let viewModel = SettingsViewModel(keychainService: diContainer.keychainService, coordinator: self)
             SettingsView(viewModel: viewModel)

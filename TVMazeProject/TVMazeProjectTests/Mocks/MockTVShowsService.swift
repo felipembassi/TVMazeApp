@@ -18,7 +18,7 @@ final class MockTVShowsService: TVShowsServiceProtocol {
         return showsToReturn
     }
 
-    func searchShows(query: String) async throws -> [TVShow] {
+    func searchShows(query _: String) async throws -> [TVShow] {
         if let error = errorToThrow {
             throw error
         }
@@ -40,22 +40,22 @@ final class MockTVShowsService: TVShowsServiceProtocol {
 
         return episodesToReturn
     }
-    
-    func fetchPerson(for page: Int) async throws -> [Person] {
+
+    func fetchPerson(for _: Int) async throws -> [Person] {
         if let error = errorToThrow {
             throw error
         }
         return personToReturn
     }
-    
-    func fetchCastCredits(for person: Int) async throws -> [CastCredit] {
+
+    func fetchCastCredits(for _: Int) async throws -> [CastCredit] {
         if let error = errorToThrow {
             throw error
         }
         return castcreditToReturn
     }
-    
-    func searchPerson(query: String) async throws -> [Person] {
+
+    func searchPerson(query _: String) async throws -> [Person] {
         if let error = errorToThrow {
             throw error
         }

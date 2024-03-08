@@ -1,4 +1,4 @@
-// EpisodeRow.swift
+// EpisodeRowView.swift
 
 import SwiftUI
 
@@ -8,8 +8,8 @@ struct EpisodeRowView: View {
     var body: some View {
         HStack {
             CustomAsyncImage(urlString: episode.image?.medium)
-            .frame(width: 50, height: 50)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
+                .frame(width: 50, height: 50)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
             VStack(alignment: .leading) {
                 Text(episode.name)
                     .fontWeight(.medium)

@@ -2,6 +2,8 @@
 
 import Combine
 import Foundation
+import SwiftData
+import SwiftUI
 
 @MainActor
 protocol TVShowDetailViewModelProtocol: ObservableObject {
@@ -42,7 +44,7 @@ final class TVShowDetailViewModel<Coordinator: CoordinatorProtocol>: TVShowDetai
             do {
                 let fetchedSeasons = try await service.fetchSeasons(for: tvShow.id)
                 var tempSeasons: [Season: [Episode]] = [:]
-                
+
                 for season in fetchedSeasons {
                     do {
                         let episodes = try await service.fetchEpisodes(for: season.id)
@@ -52,7 +54,7 @@ final class TVShowDetailViewModel<Coordinator: CoordinatorProtocol>: TVShowDetai
                         tempSeasons[season] = []
                     }
                 }
-                
+
                 seasons = tempSeasons
             } catch {
                 errorMessage = "Failed to load seasons: \(error.localizedDescription)"

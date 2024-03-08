@@ -16,7 +16,7 @@ struct HomeView<ViewModel: HomeViewModelProtocol>: View {
                 .tabItem {
                     Label("Favorites", systemImage: "heart.fill")
                 }
-            
+
             viewModel.startPersonsCoordinator()
                 .tabItem {
                     Label("Persons", systemImage: "person.fill")
@@ -38,7 +38,7 @@ struct HomeView<ViewModel: HomeViewModelProtocol>: View {
         func startPersonsCoordinator() -> AnyView {
             AnyView(EmptyView())
         }
-        
+
         func startTVShowCoordinator() -> AnyView {
             AnyView(EmptyView())
         }
@@ -53,5 +53,4 @@ struct HomeView<ViewModel: HomeViewModelProtocol>: View {
     }
     let viewModel = PreviewHomeViewModel()
     return HomeView(viewModel: viewModel)
-        .modelContainer(for: Item.self, inMemory: true)
 }

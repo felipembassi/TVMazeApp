@@ -1,9 +1,4 @@
-//
-//  PersonsView.swift
-//  TVMazeProject
-//
-//  Created by Felipe Moreira Tarrio Bassi on 07/03/24.
-//
+// PersonsView.swift
 
 import SwiftUI
 
@@ -20,7 +15,7 @@ struct PersonsView<ViewModel: PersonViewModelProtocol>: View {
                         Text(errorMessage)
                             .foregroundColor(.red)
                             .multilineTextAlignment(.center)
-                        
+
                         CustomButton(title: "Reload", systemImage: "arrow.clockwise") {
                             viewModel.refreshPersons()
                         }
@@ -37,7 +32,7 @@ struct PersonsView<ViewModel: PersonViewModelProtocol>: View {
             .navigationTitle("Persons")
         }
     }
-    
+
     @ViewBuilder private var showsGrid: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
@@ -58,7 +53,7 @@ struct PersonsView<ViewModel: PersonViewModelProtocol>: View {
 
 struct PersonRow: View {
     let person: Person
-    
+
     var body: some View {
         HStack {
             CustomAsyncImage(urlString: person.image?.medium)
@@ -77,13 +72,9 @@ struct PersonRow: View {
         var searchText: String = ""
         var errorMessage: String? = nil
         func refreshPersons() {}
-        func selectPerson(_ tvShow: Person) {}
-        func loadDataIfNeeded(currentItem: Person?) {}
-        
-        
+        func selectPerson(_: Person) {}
+        func loadDataIfNeeded(currentItem _: Person?) {}
     }
     let viewModel = PreviewPersonViewModel()
     return PersonsView(viewModel: viewModel)
 }
-
-

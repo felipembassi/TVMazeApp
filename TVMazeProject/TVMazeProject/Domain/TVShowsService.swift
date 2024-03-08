@@ -44,17 +44,17 @@ struct TVShowsService: TVShowsServiceProtocol {
         let endpoint = APIEndpoints.episodes(season: seasonID).urlString
         return try await networkService.fetchData(from: endpoint)
     }
-    
+
     func fetchPerson(for page: Int) async throws -> [Person] {
         let endpoint = APIEndpoints.person(page: page).urlString
         return try await networkService.fetchData(from: endpoint)
     }
-    
+
     func fetchCastCredits(for person: Int) async throws -> [CastCredit] {
         let endpoint = APIEndpoints.castcredits(person: person).urlString
         return try await networkService.fetchData(from: endpoint)
     }
-    
+
     func searchPerson(query: String) async throws -> [Person] {
         let endpoint = APIEndpoints.searchPerson(query: query).urlString
         let searchResults: [SearchedPerson] = try await networkService.fetchData(from: endpoint)
