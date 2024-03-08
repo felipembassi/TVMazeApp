@@ -29,7 +29,7 @@ struct FavoritesView<ViewModel: FavoritesViewModelProtocol>: View {
 
     @ViewBuilder private var showsGrid: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: .Spacing.l) {
                 ForEach(favorites, id: \.self) { tvShow in
                     TVShowCardView(tvshow: tvShow)
                         .onTapGesture {
@@ -44,7 +44,6 @@ struct FavoritesView<ViewModel: FavoritesViewModelProtocol>: View {
 
 #Preview {
     final class PreviewFavoritesViewModel: FavoritesViewModelProtocol {
-        var favorites: [TVShow] = TVShow.preview()
         func selectTVShow(_: TVShow) {}
     }
 

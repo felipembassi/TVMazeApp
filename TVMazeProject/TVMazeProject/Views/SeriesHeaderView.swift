@@ -19,15 +19,14 @@ struct SeriesHeaderView: View {
             .fontWeight(.bold)
             .foregroundColor(DesignSystem.Colors.foreground)
 
-        // Air Time
         AiringScheduleView(schedule: tvShow.schedule)
 
         HStack {
             ForEach(tvShow.genres, id: \.self) { genre in
                 Text(genre)
-                    .padding(5)
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(5)
+                    .padding(.Spacing.ss)
+                    .background(DesignSystem.Colors.boxBackground)
+                    .cornerRadius(.Spacing.ss)
                     .foregroundColor(DesignSystem.Colors.foreground)
             }
         }

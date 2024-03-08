@@ -4,6 +4,9 @@ import SwiftUI
 
 struct PersonDetailView<ViewModel: PersonDetailViewModelProtocol>: View {
     @ObservedObject var viewModel: ViewModel
+    
+    private let imageSize: CGFloat = 200
+    var title = String(localized: "person.detail.title")
 
     var body: some View {
         VStack {
@@ -12,18 +15,18 @@ struct PersonDetailView<ViewModel: PersonDetailViewModelProtocol>: View {
             } else {
                 VStack(alignment: .center) {
                     CustomAsyncImage(urlString: viewModel.person.image?.original)
-                        .frame(width: 200, height: 200)
+                        .frame(width: imageSize, height: imageSize)
                         .clipShape(Circle())
 
                     Text(viewModel.person.name)
                         .font(.title)
 
                     Divider()
-                        .padding(.horizontal, 24)
+                        .padding(.horizontal, .Spacing.l)
                     Text("Worked on:")
                         .font(.subheadline)
                     ScrollView {
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: .Spacing.l) {
                             ForEach(viewModel.tvShows, id: \.self) { tvShow in
                                 TVShowCardView(tvshow: tvShow)
                                     .onTapGesture {
@@ -36,7 +39,7 @@ struct PersonDetailView<ViewModel: PersonDetailViewModelProtocol>: View {
                 .padding()
             }
         }
-        .navigationTitle("Person Details")
+        .navigationTitle(viewModel.person.name)
     }
 }
 

@@ -1,0 +1,70 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Add to Favorites" : {
+
+    },
+    "Airs: %@ on %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Airs: %1$@ on %2$@"
+          }
+        }
+      }
+    },
+    "Enable Fingerprint/Face ID" : {
+
+    },
+    "Enter PIN" : {
+
+    },
+    "Favorites" : {
+
+    },
+    "Home" : {
+
+    },
+    "Initializing..." : {
+
+    },
+    "Loading..." : {
+
+    },
+    "No Favorites yet" : {
+
+    },
+    "person.detail.title" : {
+
+    },
+    "Persons" : {
+
+    },
+    "Please enter your Pin" : {
+
+    },
+    "Remove from Favorites" : {
+
+    },
+    "Save Settings" : {
+
+    },
+    "Security" : {
+
+    },
+    "Set PIN" : {
+
+    },
+    "Settings" : {
+
+    },
+    "TV Series" : {
+
+    },
+    "Worked on:" : {
+
+    }
+  },
+  "version" : "1.0"
+}

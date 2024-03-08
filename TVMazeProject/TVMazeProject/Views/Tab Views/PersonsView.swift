@@ -20,7 +20,7 @@ struct PersonsView<ViewModel: PersonViewModelProtocol>: View {
                             viewModel.refreshPersons()
                         }
                     }
-                    .padding(24)
+                    .padding(.Spacing.l)
                 } else {
                     showsGrid
                 }
@@ -35,7 +35,7 @@ struct PersonsView<ViewModel: PersonViewModelProtocol>: View {
 
     @ViewBuilder private var showsGrid: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: .Spacing.l) {
                 ForEach(viewModel.persons, id: \.self) { person in
                     PersonRow(person: person)
                         .onAppear {
@@ -53,11 +53,13 @@ struct PersonsView<ViewModel: PersonViewModelProtocol>: View {
 
 struct PersonRow: View {
     let person: Person
+    
+    let imageSize: CGFloat = 100
 
     var body: some View {
         HStack {
             CustomAsyncImage(urlString: person.image?.medium)
-                .frame(width: 100, height: 100)
+                .frame(width: imageSize, height: imageSize)
                 .clipShape(Circle())
             Text(person.name)
                 .frame(maxWidth: .infinity, alignment: .leading)

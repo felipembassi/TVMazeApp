@@ -9,21 +9,21 @@ struct PinView<ViewModel: PinViewModelProtocol>: View {
         if viewModel.isLoading {
             ProgressView()
         } else {
-            VStack(spacing: 20) {
+            VStack(spacing: .Spacing.l) {
                 Spacer()
                 Text("Please enter your Pin")
                     .font(DesignSystem.TextStyles.title)
 
                 SecureField("Enter PIN", text: $viewModel.pin)
                     .padding()
-                    .background(RoundedRectangle(cornerRadius: 10).strokeBorder())
+                    .background(RoundedRectangle(cornerRadius: .Spacing.m).strokeBorder())
                     .keyboardType(.numberPad)
 
                 if let errorMessage = viewModel.errorMessage, !errorMessage.isEmpty {
                     Text(errorMessage)
                         .foregroundColor(.red)
                         .font(DesignSystem.TextStyles.body)
-                        .padding([.horizontal, .bottom], 24)
+                        .padding([.horizontal, .bottom], .Spacing.l)
                 }
 
                 CustomButton(title: "Verify PIN", systemImage: "lock") {

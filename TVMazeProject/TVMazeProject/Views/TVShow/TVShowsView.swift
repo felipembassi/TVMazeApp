@@ -34,7 +34,7 @@ struct TVShowsView<ViewModel: TVShowsViewModelProtocol>: View {
 
     @ViewBuilder private var showsGrid: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: .Spacing.l) {
                 ForEach(viewModel.shows, id: \.self) { tvShow in
                     TVShowCardView(tvshow: tvShow)
                         .onAppear {

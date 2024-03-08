@@ -38,7 +38,7 @@ struct PrimaryButtonStyle: ButtonStyle {
         var body: some View {
             configuration.label
                 .multilineTextAlignment(.center)
-                .padding(16)
+                .padding(.Spacing.m)
                 .frame(maxWidth: .infinity)
                 .background(backgroundColor(isPressed: configuration.isPressed))
                 .foregroundColor(foregroundColor)
